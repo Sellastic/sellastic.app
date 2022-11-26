@@ -6,6 +6,16 @@ The application is indented to respond to the needs of a small retail stores, fa
 
 It has modules for easily integrate it to different payment systems, loyalty systems, printers and backend systems.
 
+#### Supported Database Engines
+
+- SQLite
+- Postgresql
+- MySQL
+- Oracle
+- MS-SQL
+- Firebird
+- Sybase
+
 ### Project Roadmap
 
 1. Database Structure
