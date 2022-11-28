@@ -1,0 +1,15 @@
+[database]
+engine = "sqlite"
+driver = ""
+user_name = ""
+password = ""
+database_name = "db.sqlite3"
+
+[main_display]
+width = 1280
+height = 640
+
+[customer_display]
+enable = true
+width = 1280
+height = 640
