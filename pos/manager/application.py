@@ -13,6 +13,7 @@ class Application:
         return cls.__instance
 
     def __init__(self):
+        init_db()
         self.app = QApplication([])
         self.interface = Interface()
 

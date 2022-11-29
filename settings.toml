@@ -13,3 +13,7 @@ height = 640
 enable = true
 width = 1280
 height = 640
+
+[design_files]
+main_display.login = "login.toml"
+customer_display.login = "login.toml"
