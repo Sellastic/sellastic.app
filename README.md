@@ -6,32 +6,46 @@ The application is indented to respond to the needs of a small retail stores, fa
 
 It has modules for easily integrate it to different payment systems, loyalty systems, printers and backend systems.
 
-#### Supported Database Engines
-
-- SQLite
-- Postgresql
-- MySQL
-- Oracle
-- MS-SQL
-- Firebird
-- Sybase
+> ### Project Requirements
+>
+> ##### Hardware Requirements
+>
+> - Linux/Windows supported Touch Screen Devices (with one or two displays) 
+> - ESC/P printers
+> - 2D and 3D barcode readers 
+>
+> ##### Software Requirements
+>
+> - Python 3.11
+> - PySide6 6.4.1
+> - SQLAlchemy 2.0.0b3
+>
+> #### Supported Database Engines
+>
+> - SQLite
+> - Postgresql
+> - MySQL
+> - Oracle
+> - MS-SQL
+> - Firebird
+> - Sybase
 
 ### Project Roadmap
 
-1. Database Structure
-2. User Interface
-    1. Dynamic Interface Interpreter Module
-    2. Interface Functions
-    3. Tables Layout Module
-3. SPU/PLU Management Module
-4. Customer Module
-5. Printer Module
-6. Payment Module
-7. Loyalty Module
-8. Backend Integration Module
-9. Campaign Module
-10. Reports Module
-11. Screen Designer App
+- [ ] Database Structure
+- [ ] User Interface:
+  - [ ] Dynamic Interface Interpreter Module
+  - [ ] Interface Functions
+  - [ ] Tables Layout Module
+- [ ] SPU/PLU Management Module
+- [ ] Customer Module
+- [ ] Printer Module
+- [ ] Payment Module
+- [ ] Loyalty Module
+- [ ] Backend Integration Module
+- [ ] Campaign Module
+- [ ] Reports Module
+- [ ] Screen Designer App
 
 
 ### Donation and Support 
