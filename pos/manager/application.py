@@ -1,5 +1,6 @@
 import sys
 from PySide6.QtWidgets import QApplication
+from PySide6.QtGui import QIcon
 from user_interface.manager import Interface
 from data_layer import *
 
@@ -15,6 +16,8 @@ class Application:
     def __init__(self):
         init_db()
         self.app = QApplication([])
+        self.app.setApplicationName("Sellastic")
+        self.app.setWindowIcon(QIcon('logo.png'))
         self.interface = Interface()
 
     def run(self):
