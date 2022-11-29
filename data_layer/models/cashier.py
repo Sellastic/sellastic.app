@@ -7,7 +7,7 @@ from data_layer.models.model import Model
 class Cashier(Model):
     __tablename__ = "cashier"
 
-    id = Column(BigInteger, primary_key=True, autoincrement="auto")
+    id = Column(BigInteger, primary_key=True, autoincrement=True)
     user_name = Column(String(50), unique=True, nullable=False)
     name = Column(String(50), nullable=False)
     last_name = Column(String(50), nullable=False)
@@ -17,6 +17,7 @@ class Cashier(Model):
     is_administrator = Column(Boolean(False))
     is_active = Column(Boolean(False))
     created_at = Column(DateTime, server_default=func.now())
+    login_at = Column(DateTime, server_default=func.now())
     updated_at = Column(DateTime, server_default=func.now())
 
     def __repr__(self):
