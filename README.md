@@ -33,7 +33,8 @@ It has modules for easily integrate it to different payment systems, loyalty sys
 ### Project Roadmap
 
 - [ ] Database Structure
-- [ ] User Interface:
+- [ ] POS Manager Module
+- [ ] User Interface Modules:
   - [ ] Dynamic Interface Interpreter Module
   - [ ] Interface Functions
   - [ ] Tables Layout Module
