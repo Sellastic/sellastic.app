@@ -1,12 +1,13 @@
 import sys
 from PySide6.QtWidgets import QApplication
 from PySide6.QtGui import QIcon
+
+from pos.manager.data import Data
 from user_interface.manager import Interface
 from data_layer import *
-from pos.data import DisplayType
 
 
-class Application:
+class Application(Data):
     __instance = None
 
     def __new__(cls, *args, **kwargs):
@@ -15,8 +16,7 @@ class Application:
         return cls.__instance
 
     def __init__(self):
-        self.login_success = False
-        self.display_type = DisplayType.LOGIN
+        super().__init__()
 
         init_db()
         self.app = QApplication([])
