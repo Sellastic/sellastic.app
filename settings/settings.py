@@ -15,6 +15,7 @@ class Settings:
             self.database = self.settings_data.get("database")
             self.main_display = self.settings_data.get("main_display")
             self.customer_display = self.settings_data.get("customer_display")
+            self.design_files_list = self.settings_data.get("design_files")
 
     @property
     def db_engine(self):
@@ -45,3 +46,10 @@ class Settings:
         if self.customer_display:
             return self.customer_display.get("height")
         return 640
+
+    @property
+    def design_files(self):
+        print(self.design_files_list)
+        if self.design_files_list:
+            return self.design_files_list
+        return None
