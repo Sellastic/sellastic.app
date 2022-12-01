@@ -3,8 +3,8 @@ from enum import Enum, auto
 
 class DisplayType(Enum):
     LOGIN = auto()
-    SALE = auto()
     MENU = auto()
+    SALE = auto()
     SERVICE = auto()
     SETTING = auto()
     PARAMETER = auto()

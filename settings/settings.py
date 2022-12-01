@@ -48,8 +48,13 @@ class Settings:
         return 640
 
     @property
-    def design_files(self):
-        print(self.design_files_list)
-        if self.design_files_list:
-            return self.design_files_list
+    def main_display_data(self):
+        if self.design_files_list["main_display"]:
+            return self.design_files_list["main_display"]
+        return None
+
+    @property
+    def customer_display_data(self):
+        if self.design_files_list["customer_display"]:
+            return self.design_files_list["customer_display"]
         return None

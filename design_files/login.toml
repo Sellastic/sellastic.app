@@ -6,10 +6,11 @@ toolbar = false
 statusbar = false
 background_color = 0x3268A8
 foreground_color = 0x000000
-width = 1280
-height = 640
+width = 1024
+height = 768
 
-[textbox]
+[[design]]
+type = "textbox"
 caption = "User Name"
 input_type = "alphanumeric"
 alignment = "left"
@@ -20,7 +21,8 @@ height = 50
 location_x = 0
 location_y = 0
 
-[password_textbox]
+[[design]]
+type = "password_textbox"
 caption = "Password"
 input_type = "password"
 background_color = 0xFFFFFF
@@ -30,7 +32,8 @@ height = 50
 location_x = 0
 location_y = 0
 
-[submit_button]
+[[design]]
+type = "submit_button"
 caption = "Login"
 function = "login"
 background_color = 0xFFFFFF

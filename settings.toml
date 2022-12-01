@@ -6,13 +6,13 @@ password = ""
 database_name = "db.sqlite3"
 
 [main_display]
-width = 1280
-height = 640
+width = 1024
+height = 768
 
 [customer_display]
 enable = true
-width = 1280
-height = 640
+width = 1024
+height = 768
 
 [design_files]
 main_display.login = "login.toml"

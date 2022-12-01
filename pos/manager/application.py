@@ -25,5 +25,5 @@ class Application(Status):
         self.interface = Interface()
 
     def run(self):
-        self.interface.draw()
+        self.interface.draw(self.current_display_type)
         sys.exit(self.app.exec())

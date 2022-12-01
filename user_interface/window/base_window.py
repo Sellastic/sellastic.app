@@ -2,20 +2,20 @@ import sys
 
 from PySide6.QtWidgets import QMainWindow, QStatusBar, QToolBar
 from PySide6.QtCore import Qt
-import settings
 
 
 class BaseWindow(QMainWindow):
     def __init__(self, display_type="main_display"):
         super().__init__(parent=None)
-        self.setWindowTitle("Sellastic")
-        if display_type == "main_display":
-            self.setGeometry(0, 0, settings.data.md_width, settings.data.md_height)
-        elif display_type == "customer_display":
-            self.setGeometry(0, 0, settings.data.cd_width, settings.data.cd_height)
         self.setWindowFlags(Qt.FramelessWindowHint)
-        self._create_toolbar()
-        self._create_status_bar()
+
+    def draw_window(self, settings: dict, design: list):
+        self.setWindowTitle(settings["name"])
+        self.setGeometry(0, 0, settings["width"], settings["height"])
+        if settings["toolbar"]:
+            self._create_toolbar()
+        if settings["statusbar"]:
+            self._create_status_bar()
 
     def _create_toolbar(self):
         tools = QToolBar()

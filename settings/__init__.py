@@ -1,3 +1,3 @@
 from settings.settings import Settings
 
-data = Settings()
+env_data = Settings()
