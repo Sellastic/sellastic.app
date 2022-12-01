@@ -32,7 +32,7 @@ class BaseWindow(QMainWindow):
 
     def _create_textbox(self, design_data):
         print(design_data)
-        textbox = TextBox("", self)
+        textbox = TextBox(self)
         if design_data.get('alignment') == "left":
             textbox.setAlignment(Qt.AlignLeft)
         elif design_data.get('alignment') == "right":
