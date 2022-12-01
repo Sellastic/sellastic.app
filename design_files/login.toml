@@ -36,12 +36,12 @@ location_x = 400
 location_y = 300
 
 [[design]]
-type = "submit_button"
+type = "button"
 caption = "Login"
 function = "login"
-background_color = 0xFFFFFF
-foreground_color = 0x000000
+background_color = 0x003366
+foreground_color = 0xFFFFFF
 width = 200
 height = 50
-location_x = 0
-location_y = 600
+location_x = 450
+location_y = 400

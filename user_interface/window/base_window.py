@@ -3,7 +3,7 @@ import sys
 from PySide6.QtWidgets import QMainWindow, QStatusBar, QToolBar
 from PySide6.QtCore import Qt
 
-from user_interface.control import TextBox
+from user_interface.control import TextBox, Button
 
 
 class BaseWindow(QMainWindow):
@@ -29,6 +29,17 @@ class BaseWindow(QMainWindow):
         for control_design_data in design:
             if control_design_data["type"] == "textbox":
                 self._create_textbox(control_design_data)
+            if control_design_data["type"] == "button":
+                self._create_button(control_design_data)
+
+    def _create_button(self, design_data):
+        print(design_data)
+        button = Button(design_data["caption"], self)
+
+        button.setGeometry(design_data["location_x"], design_data["location_y"],
+                           design_data["width"], design_data["height"])
+
+        button.set_color(design_data['background_color'], design_data['foreground_color'])
 
     def _create_textbox(self, design_data):
         print(design_data)
