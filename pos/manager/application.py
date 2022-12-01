@@ -2,12 +2,12 @@ import sys
 from PySide6.QtWidgets import QApplication
 from PySide6.QtGui import QIcon
 
-from pos.manager.data import Data
+from pos.manager.status import Status
 from user_interface.manager import Interface
 from data_layer import *
 
 
-class Application(Data):
+class Application(Status):
     __instance = None
 
     def __new__(cls, *args, **kwargs):

@@ -1,10 +1,10 @@
 from pos.data import DisplayType, DocumentState, DocumentType, DocumentResult
 
 
-class Data:
+class Status:
     def __init__(self):
         self.__login_succeed = False
-        self.__display_type = DisplayType.LOGIN     # initial display
+        self.__current_display_type = DisplayType.LOGIN     # initial display
         self.__document_state = DocumentState.NONE
         self.__document_type = DocumentType.NONE
         self.__document_result = DocumentResult.NONE
@@ -19,15 +19,15 @@ class Data:
             self.__login_succeed = value
 
     @property
-    def display_type(self):
-        return self.__display_type
+    def current_display_type(self):
+        return self.__current_display_type
 
-    @display_type.setter
-    def display_type(self, value):
+    @current_display_type.setter
+    def current_display_type(self, value):
         if value != DisplayType.LOGIN and self.__login_succeed is False:
-            self.__display_type = DisplayType.LOGIN
+            self.__current_display_type = DisplayType.LOGIN
         elif type(value) is DisplayType:
-            self.__display_type = value
+            self.__current_display_type = value
 
     @property
     def document_state(self):
