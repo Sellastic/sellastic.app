@@ -1,6 +1,6 @@
 [settings]
 name = "Login"
-functionality = "login"
+functionality = "LOGIN"
 login_required = false
 toolbar = false
 statusbar = false
@@ -38,10 +38,21 @@ location_y = 300
 [[design]]
 type = "button"
 caption = "Login"
-function = "login"
+function = "LOGIN"
 background_color = 0x003366
 foreground_color = 0xFFFFFF
 width = 200
 height = 50
 location_x = 450
 location_y = 400
+
+[[design]]
+type = "button"
+caption = "Exit"
+function = "EXIT_APPLICATION"
+background_color = 0xFF0000
+foreground_color = 0xFFFFFF
+width = 200
+height = 50
+location_x = 450
+location_y = 500

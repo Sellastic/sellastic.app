@@ -10,3 +10,6 @@ class Button(QPushButton):
 
     def set_color(self, background_color, foreground_color):
         self.setStyleSheet(f"QPushButton {{background-color: #{background_color:06X}; color: #{foreground_color:06X};}}")
+
+    def set_event(self, function):
+        self.click()

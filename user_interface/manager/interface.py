@@ -5,8 +5,9 @@ from user_interface.design_file import Interpreter
 
 
 class Interface:
-    def __init__(self):
-        self.window = BaseWindow()
+    def __init__(self, app):
+        self.app = app
+        self.window = BaseWindow(app=self.app)
 
     def draw(self, display_type: DisplayType):
         interpreter = Interpreter(display_type)

@@ -7,9 +7,10 @@ from user_interface.control import TextBox, Button
 
 
 class BaseWindow(QMainWindow):
-    def __init__(self, display_type="main_display"):
+    def __init__(self, app, display_type="main_display"):
         super().__init__(parent=None)
         self.setWindowFlags(Qt.FramelessWindowHint)
+        self.app = app
 
     def draw_window(self, settings: dict, design: list):
         p = self.palette()
@@ -40,6 +41,8 @@ class BaseWindow(QMainWindow):
                            design_data["width"], design_data["height"])
 
         button.set_color(design_data['background_color'], design_data['foreground_color'])
+        button.setToolTip(design_data["caption"])
+        button.clicked.connect(self.app.event_distributor(design_data["function"]))
 
     def _create_textbox(self, design_data):
         print(design_data)
