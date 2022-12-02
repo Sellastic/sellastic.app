@@ -5,7 +5,7 @@ from PySide6.QtGui import QIcon
 from pos.manager.status import Status
 from pos.manager.event_handler import EventHandler
 from user_interface.manager import Interface
-from data_layer import *
+from data_layer import init_db
 
 
 class Application(Status, EventHandler):
