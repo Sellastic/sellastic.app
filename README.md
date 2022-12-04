@@ -23,6 +23,7 @@ It has modules for easily integrate it to different payment systems, loyalty sys
 > - Python 3.11
 > - PySide6 6.4.1
 > - SQLAlchemy 2.0.0b3
+> - requests 2.28.1
 >
 > #### Supported Database Engines
 >
