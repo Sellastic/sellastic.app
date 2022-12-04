@@ -1,5 +1,3 @@
-import sys
-
 from PySide6.QtWidgets import QMainWindow, QStatusBar, QToolBar
 from PySide6.QtCore import Qt
 
@@ -33,6 +31,17 @@ class BaseWindow(QMainWindow):
             if control_design_data["type"] == "button":
                 self._create_button(control_design_data)
 
+    def get_textbox_values(self):
+        values = {}
+        for item in self.children():
+            if type(item) is TextBox:
+                values[item.__name__] = item.text()
+        return values
+
+    def clear(self):
+        for item in self.children():
+            item.deleteLater()
+
     def _create_button(self, design_data):
         print(design_data)
         button = Button(design_data["caption"], self)
@@ -55,6 +64,7 @@ class BaseWindow(QMainWindow):
             textbox.setAlignment(Qt.AlignCenter)
         if design_data.get('input_type') == "password":
             textbox.set_password_type()
+        textbox.__name__ = design_data.get('field_name')
         textbox.setGeometry(design_data["location_x"], design_data["location_y"],
                             design_data["width"], design_data["height"])
         textbox.set_font_size(design_data.get('font_size'))

@@ -8,6 +8,8 @@ class TextBox(QLineEdit):
 
         self.setFont(QFont("Verdana", 20))
 
+        self.filed_name = ""
+
     def set_font_size(self, font_size):
         if font_size:
             self.setFont(QFont("Verdana", font_size))

@@ -1,7 +1,7 @@
 from sqlalchemy import Column, BigInteger, String, Boolean, DateTime
 from sqlalchemy.sql import func
 
-from data_layer.models.model import Model
+from data_layer.model.model import Model
 
 
 class Cashier(Model):

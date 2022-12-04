@@ -15,3 +15,7 @@ class Interface:
         print(interpreter.design)
         self.window.draw_window(interpreter.settings, interpreter.design)
         self.window.show()
+
+    def redraw(self, display_type: DisplayType):
+        self.window = BaseWindow(app=self.app)
+        self.draw(display_type)
