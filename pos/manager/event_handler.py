@@ -1,8 +1,8 @@
 from pos.data import EventName
-from pos.manager.event import GeneralEvent
+from pos.manager.event import GeneralEvent, ReportEvent, SaleEvent, SettingEvent
 
 
-class EventHandler(GeneralEvent):
+class EventHandler(GeneralEvent, ReportEvent, SaleEvent, SettingEvent):
     def event_distributor(self, event_name):
         function_object = None
         match event_name:
