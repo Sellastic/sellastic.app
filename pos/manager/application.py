@@ -2,13 +2,14 @@ import sys
 from PySide6.QtWidgets import QApplication
 from PySide6.QtGui import QIcon
 
-from pos.manager.status import Status
+from pos.manager.current_status import CurrentStatus
+from pos.manager.current_data import CurrentData
 from pos.manager.event_handler import EventHandler
 from user_interface.manager import Interface
 from data_layer import init_db
 
 
-class Application(Status, EventHandler):
+class Application(CurrentStatus, CurrentData, EventHandler):
     __instance = None
 
     def __new__(cls, *args, **kwargs):
@@ -17,7 +18,8 @@ class Application(Status, EventHandler):
         return cls.__instance
 
     def __init__(self):
-        Status.__init__(self)
+        CurrentStatus.__init__(self)
+        CurrentData.__init__(self)
         EventHandler.__init__(self)
 
         init_db()

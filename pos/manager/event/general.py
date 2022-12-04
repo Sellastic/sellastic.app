@@ -1,5 +1,5 @@
 from pos.data import DisplayType
-from data_layer import session, Cashier
+from data_layer import Cashier
 
 
 class GeneralEvent:
@@ -16,12 +16,17 @@ class GeneralEvent:
                 user_name = value
             if key == "password":
                 password = value
-        print("user_name", user_name, "password", password)
-        cashiers = session.query(Cashier).filter_by(user_name=user_name.lower(), password=password)
+        cashiers = Cashier().filter_by(user_name=user_name.lower(), password=password)
 
-        print(cashiers.count(), cashiers.values)
-        if cashiers.count() == 0 or not (user_name.lower() == "admin" and password == "admin"):
+        if cashiers.count() == 0 and not (user_name.lower() == "admin" and password == "admin"):
             return
+        if cashiers.count() == 0 and (user_name.lower() == "admin" and password == "admin"):
+            cashier = Cashier(user_name=user_name.lower(), password=password,
+                              name="", last_name="", identity_number="", description="",
+                              is_active=True, is_administrator=True)
+            cashier.save()
+        else:
+            pass
         self.login_succeed = True
         self.current_display_type = DisplayType.MENU
         self.interface.redraw(self.current_display_type)

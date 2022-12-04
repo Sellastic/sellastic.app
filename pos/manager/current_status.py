@@ -1,7 +1,7 @@
 from pos.data import DisplayType, DocumentState, DocumentType, DocumentResult
 
 
-class Status:
+class CurrentStatus:
     def __init__(self):
         self.__login_succeed = False
         self.__current_display_type = DisplayType.LOGIN     # initial display
