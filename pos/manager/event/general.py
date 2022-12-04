@@ -31,7 +31,6 @@ class GeneralEvent:
         self.current_display_type = DisplayType.MENU
         self.interface.redraw(self.current_display_type)
 
-
     def _logout(self):
         self.login_succeed = False
         self.current_display_type = DisplayType.LOGIN
