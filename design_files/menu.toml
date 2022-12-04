@@ -1,7 +1,7 @@
 [settings]
-name = "Login"
-functionality = "LOGIN"
-login_required = false
+name = "Menu"
+functionality = "MENU"
+login_required = true
 toolbar = false
 statusbar = false
 background_color = 0x3268A8
@@ -11,14 +11,25 @@ height = 768
 
 [[design]]
 type = "button"
-caption = "Login"
-function = "LOGIN"
+caption = "Sale"
+function = "SALE"
+background_color = 0x778D45
+foreground_color = 0xFFFFFF
+width = 200
+height = 50
+location_x = 450
+location_y = 200
+
+[[design]]
+type = "button"
+caption = "Settings"
+function = "SETTING"
 background_color = 0x003366
 foreground_color = 0xFFFFFF
 width = 200
 height = 50
 location_x = 450
-location_y = 400
+location_y = 300
 
 [[design]]
 type = "button"
