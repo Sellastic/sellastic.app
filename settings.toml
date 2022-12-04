@@ -5,6 +5,10 @@ user_name = ""
 password = ""
 database_name = "db.sqlite3"
 
+[backend_integration]
+backend_type = "office"
+backend_connection = "127.0.0.1:9999"
+
 [main_display]
 width = 1024
 height = 768
