@@ -1,3 +1,5 @@
+![Python 3.11](https://img.shields.io/badge/python-%3E=_3.11-success.svg)
+
 # sellastic.app
 
 ### Open Source Touch Screen Point-of-Sale Application
