@@ -5,3 +5,4 @@ class EventName(Enum):
     NONE = auto()
     EXIT_APPLICATION = auto()
     LOGIN = auto()
+    LOGOUT = auto()

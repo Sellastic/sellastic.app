@@ -12,6 +12,8 @@ class EventHandler:
                 function_object = self._exit_application
             case EventName.LOGIN.name:
                 function_object = self._login
+            case EventName.LOGOUT.name:
+                function_object = self._logout
         return function_object
 
     def _exit_application(self):
@@ -37,4 +39,8 @@ class EventHandler:
         self.current_display_type = DisplayType.MENU
         self.interface.redraw(self.current_display_type)
 
+    def _logout(self):
+        self.login_succeed = False
+        self.current_display_type = DisplayType.LOGIN
+        self.interface.redraw(self.current_display_type)
 
