@@ -1,7 +1,7 @@
 import tomllib
 
 
-class Settings:
+class Setting:
     __instance = None
 
     def __new__(cls, *args, **kwargs):
@@ -11,11 +11,11 @@ class Settings:
 
     def __init__(self):
         with open("settings.toml", "rb") as file_object:
-            self.settings_data = tomllib.load(file_object)
-            self.database = self.settings_data.get("database")
-            self.main_display = self.settings_data.get("main_display")
-            self.customer_display = self.settings_data.get("customer_display")
-            self.design_files_list = self.settings_data.get("design_files")
+            self.setting_data = tomllib.load(file_object)
+            self.database = self.setting_data.get("database")
+            self.main_display = self.setting_data.get("main_display")
+            self.customer_display = self.setting_data.get("customer_display")
+            self.design_files_list = self.setting_data.get("design_files")
 
     @property
     def db_engine(self):

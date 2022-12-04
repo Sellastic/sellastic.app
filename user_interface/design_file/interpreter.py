@@ -1,7 +1,7 @@
 import tomllib
 
 from pos.data import DisplayType
-from settings import env_data
+from setting import env_data
 
 
 class Interpreter:

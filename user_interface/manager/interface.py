@@ -1,5 +1,4 @@
 from user_interface.window import BaseWindow
-from settings import env_data
 from pos.data import DisplayType
 from user_interface.design_file import Interpreter
 
