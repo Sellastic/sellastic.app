@@ -1,7 +1,7 @@
 from PySide6 import QtWidgets, QtCore, QtGui
 from PySide6.QtCore import Qt, QEvent
 from PySide6.QtGui import QPainter
-from PySide6.QtWidgets import QSizePolicy
+from PySide6.QtWidgets import QSizePolicy, QLineEdit
 
 from user_interface.window.virtual_keyboard.key_animation_thread import KeyAnimationThread
 from user_interface.window.virtual_keyboard.key_press_handler_thread import KeyPressHandlerThread
@@ -13,7 +13,7 @@ class AlphaNumericVirtualKeyboard(QtWidgets.QWidget):
     """ AlphaNumericVirtualKeyboard class
     """
 
-    def __init__(self, source, x_pos=0, y_pos=0, parent=None):
+    def __init__(self, source: QLineEdit, x_pos=0, y_pos=0, parent=None):
         """ AlphaNumericVirtualKeyboard class constructor
 
         Parameters
@@ -31,12 +31,15 @@ class AlphaNumericVirtualKeyboard(QtWidgets.QWidget):
 
         self.setWindowState(Qt.WindowFullScreen)
         self.setSizePolicy(QtWidgets.QSizePolicy(QSizePolicy.Fixed, QSizePolicy.Fixed))
-        self.caps_lock = 1
-        self.number_only = 2
-        self.fractionNumber = 3
+        self.CAPS_LOCK = 1
+        self.NUMBER_ONLY = 2
+        self.FRACTION_NUMBER = 3
         self.constraint = 0
         self.x_pos = x_pos
-        self.y_pos = y_pos
+        if y_pos != 0:
+            self.y_pos = y_pos
+        else:
+            self.y_pos = source.pos().y() + source.size().height()
         self.source = source
         self.parent = parent
         self.move_up = False
@@ -53,7 +56,7 @@ class AlphaNumericVirtualKeyboard(QtWidgets.QWidget):
         self.caps_button = KeyboardButton("Caps", self)
         self.symbol_button = KeyboardButton("?!@#", self)
         self.close_button = KeyboardButton("Close", self)
-        self.sym_state = False
+        self.symbol_state = False
         self.caps_state = False
         self.is_hidden = True
         self.close_ui_scroll = None
@@ -69,11 +72,11 @@ class AlphaNumericVirtualKeyboard(QtWidgets.QWidget):
                                        ['Z', 'X', 'C', 'V', 'B', 'N', 'M', ',', 'Backspace'],
                                        ['Caps', ' ', 'Sym', 'Close', '  ']]
 
-        self.key_list_by_lines_sym = [['1', '2', '3', '4', '5', '6', '7', '8', '9', '0'],
-                                      ['~', '`', '@', '#', '$', '%', '^', '&&', '*', '('],
-                                      [')', '_', '-', '+', '=', '|', '[', ']', '{', "'"],
-                                      ['}', '"', '<', '>', '?', '/', '\\', '!', 'Backspace'],
-                                      ['Caps', ' ', 'Sym', 'Close', '  ']]
+        self.key_list_by_lines_symbol = [['1', '2', '3', '4', '5', '6', '7', '8', '9', '0'],
+                                         ['~', '`', '@', '#', '$', '%', '^', '&&', '*', '('],
+                                         [')', '_', '-', '+', '=', '|', '[', ']', '{', "'"],
+                                         ['}', '"', '<', '>', '?', '/', '\\', '!', 'Backspace'],
+                                         ['Caps', ' ', 'Sym', 'Close', '  ']]
 
         self.array_buttons = [[0 for x in range(10)] for y in range(5)]
 
@@ -83,7 +86,7 @@ class AlphaNumericVirtualKeyboard(QtWidgets.QWidget):
         keys = None
         if not self.caps_state:
             self.caps_state = 1
-            self.sym_state = 0
+            self.symbol_state = 0
             keys = self.key_list_by_lines_caps
             self.caps_button.setStyleSheet(
                 "background-color:rgb(29, 150, 255);font-size: 20px;font-family: Noto Sans CJK JP;" +
@@ -97,10 +100,11 @@ class AlphaNumericVirtualKeyboard(QtWidgets.QWidget):
                 "background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,stop: 0 #f6f7fa, stop: 1 #dadbde);" +
                 "min-height:42px; max-height: 42px; width: 120px;}\n" +
                 "QPushButton:pressed {background-color: rgb(29, 150, 255);}")
-        for lineIndex, line in enumerate(keys):
-            for keyIndex, key in enumerate(line):
-                if key != ' ' and key != '  ' and key != 'Backspace' and key != 'CAPS' and key != 'Close' and key != 'Sym':
-                    button = self.array_buttons[lineIndex][keyIndex]
+        for line_index, line in enumerate(keys):
+            for key_index, key in enumerate(line):
+                if key != ' ' and key != '  ' and key != 'Backspace' and \
+                        key != 'CAPS' and key != 'Close' and key != 'Sym':
+                    button = self.array_buttons[line_index][key_index]
                     button.setText(key)
         self.symbol_button.setStyleSheet(
             "QPushButton {font-size: 20px;font-family: Noto Sans CJK JP;" +
@@ -108,18 +112,18 @@ class AlphaNumericVirtualKeyboard(QtWidgets.QWidget):
             "background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,stop: 0 #f6f7fa, stop: 1 #dadbde);" +
             "min-height:42px; max-height: 42px; width: 120px;}\n" +
             "QPushButton:pressed {background-color: rgb(29, 150, 255);}")
-        self.sym_state = 0
+        self.symbol_state = 0
 
     def _open_symbol(self):
         keys = None
-        if not self.sym_state:
-            self.sym_state = 1
-            keys = self.key_list_by_lines_sym
+        if not self.symbol_state:
+            self.symbol_state = 1
+            keys = self.key_list_by_lines_symbol
             self.symbol_button.setStyleSheet(
                 "background-color:rgb(29, 150, 255);font-size: 20px;font-family: Noto Sans CJK JP;" +
                 "border: 3px solid #8f8f91;border-radius: 8px; min-height:42px; max-height: 42px; width: 120px;")
         elif self.caps_state:
-            self.sym_state = 0
+            self.symbol_state = 0
             keys = self.key_list_by_lines_caps
             self.symbol_button.setStyleSheet(
                 "QPushButton {font-size: 20px;font-family: Noto Sans CJK JP;border: 3px solid #8f8f91;" +
@@ -128,7 +132,7 @@ class AlphaNumericVirtualKeyboard(QtWidgets.QWidget):
                 "min-height:42px; max-height: 42px; width: 120px;}\n" +
                 "QPushButton:pressed {background-color: rgb(29, 150, 255);}")
         else:
-            self.sym_state = 0
+            self.symbol_state = 0
             keys = self.key_list_by_lines_lower
             self.symbol_button.setStyleSheet(
                 "QPushButton {font-size: 20px;font-family: Noto Sans CJK JP;border: 3px solid #8f8f91;" +
@@ -136,10 +140,11 @@ class AlphaNumericVirtualKeyboard(QtWidgets.QWidget):
                 "background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,stop: 0 #f6f7fa, stop: 1 #dadbde);" +
                 "min-height:42px; max-height: 42px; width: 120px;}\n" +
                 "QPushButton:pressed {background-color: rgb(29, 150, 255);}")
-        for lineIndex, line in enumerate(keys):
-            for keyIndex, key in enumerate(line):
-                if key != ' ' and key != '  ' and key != 'Backspace' and key != 'Caps' and key != 'Close' and key != 'Sym':
-                    button = self.array_buttons[lineIndex][keyIndex]
+        for line_index, line in enumerate(keys):
+            for key_index, key in enumerate(line):
+                if key != ' ' and key != '  ' and key != 'Backspace' and \
+                        key != 'Caps' and key != 'Close' and key != 'Sym':
+                    button = self.array_buttons[line_index][key_index]
                     button.setText(key)
 
     def display(self, source=None, event=None, ui_scroll=None, close_button_enable=False, call_back=None, constraint=0,
@@ -163,8 +168,6 @@ class AlphaNumericVirtualKeyboard(QtWidgets.QWidget):
         move_up:  , optional
         
         """
-        x_pos = 420
-        y_pos = 700
         self.move_up = move_up
         if ui_scroll:
             self.close_ui_scroll = ui_scroll
@@ -207,10 +210,10 @@ class AlphaNumericVirtualKeyboard(QtWidgets.QWidget):
                         self.array_buttons[line_index][key_index] = self.symbol_button
                         self.keys_layout.addWidget(self.symbol_button, line_index, 6)
                         self.symbol_button.key_button_clicked_signal.connect(self._open_symbol)
-                        if self.sym_state == 1:
+                        if self.symbol_state == 1:
                             self.symbol_button.setStyleSheet(
                                 "background-color:rgb(29, 150, 255);border: 3px solid #8f8f91;border-radius: 8px;" +
-                                "min-height:42px; max-height: 42px; width: 120px;")
+                                "min-height:42px; max-height: 42px; width: 20px;")
                     else:
                         button = KeyboardButton(key, self.parent)
                         self.array_buttons[line_index][key_index] = button
@@ -218,7 +221,8 @@ class AlphaNumericVirtualKeyboard(QtWidgets.QWidget):
                         button.key_button_clicked_signal.connect(lambda key: self._add_input_by_key(key))
 
             # self.global_layout.addLayout(self.keys_layout)
-            self.move(self.x_pos, self.y_pos * 2)
+            # self.move(self.x_pos, self.y_pos * 2)
+            self.move(self.x_pos, self.y_pos)
             self.show()
             self.animation_signal.signal.connect(self._show_animate)
             animate = KeyAnimationThread(self.animation_signal.signal, self)
@@ -233,33 +237,29 @@ class AlphaNumericVirtualKeyboard(QtWidgets.QWidget):
                     button = self.array_buttons[line_index][key_index]
                     button.setDisabled(False)
 
-        if constraint == self.caps_lock:
+        if constraint == self.CAPS_LOCK:
             self.caps_button.setDisabled(True)
             self.caps_state = 0
             self._convert_to_caps()
-        elif constraint == self.numberOnly or constraint == self.fractionNumber:
+        elif constraint == self.NUMBER_ONLY or constraint == self.FRACTION_NUMBER:
             for line_index, line in enumerate(self.key_list_by_lines_lower):
                 for key_index, key in enumerate(line):
                     if line_index:
                         button = self.array_buttons[line_index][key_index]
                         if not (button.text() == "Backspace" or button.text() == "Enter") and \
-                                ((constraint == self.fractionNumber and not button.text() == ".") or
-                                 constraint == self.numberOnly):
+                                ((constraint == self.FRACTION_NUMBER and not button.text() == ".") or
+                                 constraint == self.NUMBER_ONLY):
                             button.setDisabled(True)
         else:
             self.caps_state = 1
             self.caps_button.setDisabled(False)
             self._convert_to_caps()
 
-        if x_pos:
-            self.x_pos = x_pos
-        if y_pos:
-            self.y_pos = y_pos
-        self.close_button.keyDisabled(close_button_enable)
-        # self.move(self.x_pos, self.y_pos)
+        self.close_button.key_disabled(close_button_enable)
 
     def _show_animate(self, val):
-        self.move(self.x_pos, 2 * self.y_pos - self.y_pos * (val) / 25)
+        pass
+        #self.move(self.x_pos, 2 * self.y_pos - self.y_pos * (val) / 25)
 
     def _backspace_press_event(self, event):
         QtWidgets.QPushButton.mousePressEvent(self.back_button, event)
@@ -298,13 +298,13 @@ class AlphaNumericVirtualKeyboard(QtWidgets.QWidget):
         return getattr(self, "keyButton" + key.capitalize())
 
     def _get_key(self, val):
-        if not self.sym_state:
+        if not self.symbol_state:
             return (val.lower(), val.capitalize())[self.caps_state]
         else:
             for i, e in enumerate(self.key_list_by_lines_lower):
                 try:
                     pos = i, e.index(val)
-                    retval = self.key_list_by_lines_sym[pos[0]][pos[1]]
+                    retval = self.key_list_by_lines_symbol[pos[0]][pos[1]]
                     if retval == "&&":
                         retval = "&"
                     return retval
@@ -350,7 +350,7 @@ class AlphaNumericVirtualKeyboard(QtWidgets.QWidget):
                 QtCore.QCoreApplication.postEvent(self.source, event_release)
                 return
             else:
-                if self.constraint == self.fractionNumber and "." in self.source.text() and key_to_add == ".":
+                if self.constraint == self.FRACTION_NUMBER and "." in self.source.text() and key_to_add == ".":
                     return
                 event_press = QtGui.QKeyEvent(QEvent.KeyPress, Qt.Key_1, Qt.NoModifier, key_to_add)
                 QtCore.QCoreApplication.postEvent(self.source, event_press)
@@ -432,7 +432,7 @@ class AlphaNumericVirtualKeyboard(QtWidgets.QWidget):
             Event handle when AddPatientScreen widget resizes
 
         """
-        self.resize(1070, 315)
+        self.resize(1024, 315)
         event.accept()
 
     def hide(self, animation=False):

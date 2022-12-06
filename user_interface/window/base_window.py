@@ -2,7 +2,7 @@ from PySide6.QtWidgets import QMainWindow, QStatusBar, QToolBar
 from PySide6.QtCore import Qt
 
 from user_interface.control import TextBox, Button
-
+from user_interface.window.virtual_keyboard import AlphaNumericVirtualKeyboard
 
 class BaseWindow(QMainWindow):
     def __init__(self, app, display_type="main_display"):
@@ -72,6 +72,7 @@ class BaseWindow(QMainWindow):
         p.setColor(textbox.backgroundRole(), design_data['background_color'])
         p.setColor(textbox.foregroundRole(), design_data['foreground_color'])
         textbox.setPalette(p)
+        AlphaNumericVirtualKeyboard(source=textbox, parent=self).display()
 
     def _create_toolbar(self):
         tools = QToolBar()

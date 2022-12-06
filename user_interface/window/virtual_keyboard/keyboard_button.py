@@ -22,13 +22,27 @@ class KeyboardButton(QtWidgets.QPushButton):
         self.set_key(key)
         self.clicked.connect(self.emit_key)
         if key == "Backspace":
-            self.setStyleSheet("QPushButton {min-width: 100px;font-size: 20px; font-family: Noto Sans CJK JP;max-width: 200px; min-height:40px; max-height: 40px; border: 3px solid #8f8f91;border-radius: 8px;background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,stop: 0 #f6f7fa, stop: 1 #dadbde);}\nQPushButton:pressed {background-color: rgb(29, 150, 255);}")
+            self.setStyleSheet("QPushButton {min-width: 100px;font-size: 20px; font-family: Noto Sans CJK JP;" +
+                               "max-width: 200px; min-height:40px; max-height: 40px;" +
+                               "border: 3px solid #8f8f91;border-radius: 8px;" +
+                               "background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,stop: 0 #f6f7fa, stop: 1 #dadbde);}\n" +
+                               "QPushButton:pressed {background-color: rgb(29, 150, 255);}")
         elif key == "  ":
-            self.setStyleSheet("QPushButton {min-width: 100px;font-size: 20px;font-family: Noto Sans CJK JP; max-width: 200px; min-height:40px; max-height: 40px; border: 3px solid #8f8f91;border-radius: 8px;background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,stop: 0 #f6f7fa, stop: 1 #dadbde);}\nQPushButton:pressed {background-color: rgb(29, 150, 255);}")
+            self.setStyleSheet("QPushButton {min-width: 100px;font-size: 20px;font-family: Noto Sans CJK JP;" +
+                               "max-width: 200px; min-height:40px; max-height: 40px; border: 3px solid #8f8f91;" +
+                               "border-radius: 8px;background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,stop: 0 #f6f7fa, stop: 1 #dadbde);}\n" +
+                               "QPushButton:pressed {background-color: rgb(29, 150, 255);}")
         elif key == " ":
-            self.setStyleSheet("QPushButton {min-width: 450px;font-size: 20px;font-family: Noto Sans CJK JP; max-width: 550px; min-height:40px; max-height: 40px; border: 3px solid #8f8f91;border-radius: 8px;background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,stop: 0 #f6f7fa, stop: 1 #dadbde);}\nQPushButton:pressed {background-color: rgb(29, 150, 255);}")
+            self.setStyleSheet("QPushButton {min-width: 450px;font-size: 20px;font-family: Noto Sans CJK JP; max-width: 550px;" +
+                               "min-height:40px; max-height: 40px; border: 3px solid #8f8f91;border-radius: 8px;" +
+                               "background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,stop: 0 #f6f7fa, stop: 1 #dadbde);}\n" +
+                               "QPushButton:pressed {background-color: rgb(29, 150, 255);}")
         else:
-            self.setStyleSheet("QPushButton {min-width: 80px;font-size: 20px;font-family: Noto Sans CJK JP; max-width: 80px; min-height:40px; max-height: 40px; border: 3px solid #8f8f91;border-radius: 8px;background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,stop: 0 #f6f7fa, stop: 1 #dadbde);}\nQPushButton:pressed {background-color: rgb(29, 150, 255);}")
+            self.setStyleSheet("QPushButton {min-width: 80px;font-size: 20px;font-family: Noto Sans CJK JP;" +
+                               "max-width: 80px; min-height:40px; max-height: 40px; border: 3px solid #8f8f91;" +
+                               "border-radius: 8px;" +
+                               "background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,stop: 0 #f6f7fa, stop: 1 #dadbde);}\n" +
+                               "QPushButton:pressed {background-color: rgb(29, 150, 255);}")
         self.setFocusPolicy(Qt.NoFocus)
 
     def set_key(self, key):
@@ -63,5 +77,5 @@ class KeyboardButton(QtWidgets.QPushButton):
         """
         return QtCore.QSize(80, 80)
 
-    def keyDisabled(self, flag):
+    def key_disabled(self, flag):
         self.setDisabled(flag)
