@@ -72,7 +72,6 @@ class BaseWindow(QMainWindow):
         p.setColor(textbox.backgroundRole(), design_data['background_color'])
         p.setColor(textbox.foregroundRole(), design_data['foreground_color'])
         textbox.setPalette(p)
-        AlphaNumericVirtualKeyboard(source=textbox, parent=self).display()
 
     def _create_toolbar(self):
         tools = QToolBar()
