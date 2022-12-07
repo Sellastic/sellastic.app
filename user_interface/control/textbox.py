@@ -16,3 +16,9 @@ class TextBox(QLineEdit):
 
     def set_password_type(self):
         self.setEchoMode(QLineEdit.Password)
+
+    def focusInEvent(self, event):
+        pass
+
+    def focusOutEvent(self, event):
+        pass
