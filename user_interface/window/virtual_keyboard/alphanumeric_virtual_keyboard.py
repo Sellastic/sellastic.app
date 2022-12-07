@@ -13,13 +13,17 @@ class AlphaNumericVirtualKeyboard(QtWidgets.QWidget):
     """ AlphaNumericVirtualKeyboard class
     """
 
-    def __init__(self, source: QLineEdit, x_pos=0, y_pos=0, parent=None):
+    def __init__(self, source: QLineEdit, width=970, height=315, x_pos=0, y_pos=0, parent=None):
         """ AlphaNumericVirtualKeyboard class constructor
 
         Parameters
         ----------
        source : QLineEdit
             lineedit to which characters will be added
+        width : int, optional
+
+        height : int, optional
+
         x_pos : int, optional
             X position of the keypad pop up (the default is 0)
         y_pos : int, optional
@@ -35,13 +39,29 @@ class AlphaNumericVirtualKeyboard(QtWidgets.QWidget):
         self.NUMBER_ONLY = 2
         self.FRACTION_NUMBER = 3
         self.constraint = 0
-        self.x_pos = x_pos
-        if y_pos != 0:
-            self.y_pos = y_pos
-        else:
-            self.y_pos = source.pos().y() + source.size().height()
         self.source = source
         self.parent = parent
+        self.keyboard_width = width
+        self.keyboard_height = height
+
+        if self.parent.width() < self.keyboard_width:
+            self.keyboard_width = self.parent.width()
+
+        if self.parent.height() / 2 < self.keyboard_height:
+            self.keyboard_height = int(self.parent.height() / 2)
+
+        if x_pos != 0:
+            self.x_pos = x_pos
+        else:
+            self.x_pos = int((self.parent.width() - self.keyboard_width) / 2)
+
+        if y_pos != 0:
+            self.y_pos = y_pos
+        elif self.source.pos().y() + self.source.size().height() > self.parent.height() / 2:
+            self.y_pos = 0
+        else:
+            self.y_pos = self.parent.height() - self.keyboard_height
+
         self.move_up = False
         # self.global_layout = QtWidgets.QVBoxLayout(parent)
         self.keys_layout = QtWidgets.QGridLayout(self)
@@ -259,7 +279,7 @@ class AlphaNumericVirtualKeyboard(QtWidgets.QWidget):
 
     def _show_animate(self, val):
         pass
-        #self.move(self.x_pos, 2 * self.y_pos - self.y_pos * (val) / 25)
+        # self.move(self.x_pos, 2 * self.y_pos - self.y_pos * (val) / 25)
 
     def _backspace_press_event(self, event):
         QtWidgets.QPushButton.mousePressEvent(self.back_button, event)
@@ -432,7 +452,7 @@ class AlphaNumericVirtualKeyboard(QtWidgets.QWidget):
             Event handle when AddPatientScreen widget resizes
 
         """
-        self.resize(1024, 315)
+        self.resize(self.keyboard_width, self.keyboard_height)
         event.accept()
 
     def hide(self, animation=False):
