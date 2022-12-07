@@ -1,8 +1,10 @@
+from PySide6 import QtGui
 from PySide6.QtWidgets import QMainWindow, QStatusBar, QToolBar
 from PySide6.QtCore import Qt
 
 from user_interface.control import TextBox, Button
 from user_interface.window.virtual_keyboard import AlphaNumericVirtualKeyboard
+
 
 class BaseWindow(QMainWindow):
     def __init__(self, app, display_type="main_display"):
@@ -10,7 +12,10 @@ class BaseWindow(QMainWindow):
         self.setWindowFlags(Qt.FramelessWindowHint)
         self.app = app
 
+        self.keyboard = None
+
     def draw_window(self, settings: dict, design: list):
+        self.setUpdatesEnabled(False)
         p = self.palette()
         p.setColor(self.backgroundRole(), settings['background_color'])
         p.setColor(self.foregroundRole(), settings['foreground_color'])
@@ -19,6 +24,8 @@ class BaseWindow(QMainWindow):
         self.setWindowTitle(settings["name"])
         self.move(0, 0)
         self.setFixedSize(settings["width"], settings["height"])
+
+        self.keyboard = AlphaNumericVirtualKeyboard(source=None, parent=self)
 
         if settings["toolbar"]:
             self._create_toolbar()
@@ -30,6 +37,12 @@ class BaseWindow(QMainWindow):
                 self._create_textbox(control_design_data)
             if control_design_data["type"] == "button":
                 self._create_button(control_design_data)
+        self.setUpdatesEnabled(True)
+
+        for item in self.children():
+            if type(item) is TextBox:
+                item.setFocus()
+                break
 
     def get_textbox_values(self):
         values = {}
@@ -68,10 +81,13 @@ class BaseWindow(QMainWindow):
         textbox.setGeometry(design_data["location_x"], design_data["location_y"],
                             design_data["width"], design_data["height"])
         textbox.set_font_size(design_data.get('font_size'))
+        textbox.filed_name = design_data.get('caption')
+        textbox.setPlaceholderText(textbox.filed_name)
         p = textbox.palette()
         p.setColor(textbox.backgroundRole(), design_data['background_color'])
         p.setColor(textbox.foregroundRole(), design_data['foreground_color'])
         textbox.setPalette(p)
+        textbox.keyboard = self.keyboard
 
     def _create_toolbar(self):
         tools = QToolBar()

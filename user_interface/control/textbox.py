@@ -9,6 +9,7 @@ class TextBox(QLineEdit):
         self.setFont(QFont("Verdana", 20))
 
         self.filed_name = ""
+        self.__keyboard = None
 
     def set_font_size(self, font_size):
         if font_size:
@@ -18,7 +19,20 @@ class TextBox(QLineEdit):
         self.setEchoMode(QLineEdit.Password)
 
     def focusInEvent(self, event):
-        pass
+        if self.keyboard and self.keyboard.is_hidden:
+            print(self.filed_name)
+            self.keyboard.display(source=self)
+            event.accept()
 
     def focusOutEvent(self, event):
-        pass
+        if self.keyboard:
+            self.keyboard.hide()
+            event.accept()
+
+    @property
+    def keyboard(self):
+        return self.__keyboard
+
+    @keyboard.setter
+    def keyboard(self, value):
+        self.__keyboard = value

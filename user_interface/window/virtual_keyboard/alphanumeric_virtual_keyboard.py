@@ -13,7 +13,7 @@ class AlphaNumericVirtualKeyboard(QtWidgets.QWidget):
     """ AlphaNumericVirtualKeyboard class
     """
 
-    def __init__(self, source: QLineEdit, width=970, height=315, x_pos=0, y_pos=0, parent=None):
+    def __init__(self, source=None, width=970, height=315, x_pos=0, y_pos=0, parent=None):
         """ AlphaNumericVirtualKeyboard class constructor
 
         Parameters
@@ -28,12 +28,11 @@ class AlphaNumericVirtualKeyboard(QtWidgets.QWidget):
             X position of the keypad pop up (the default is 0)
         y_pos : int, optional
             Y position of the keypad pop up (the default is 0)
-        parent : QWidget, optional
+        parent : QWidget
             Parent widget (the default is None)
         """
         super(AlphaNumericVirtualKeyboard, self).__init__(parent)
 
-        self.setWindowState(Qt.WindowFullScreen)
         self.setSizePolicy(QtWidgets.QSizePolicy(QSizePolicy.Fixed, QSizePolicy.Fixed))
         self.CAPS_LOCK = 1
         self.NUMBER_ONLY = 2
@@ -50,17 +49,17 @@ class AlphaNumericVirtualKeyboard(QtWidgets.QWidget):
         if self.parent.height() / 2 < self.keyboard_height:
             self.keyboard_height = int(self.parent.height() / 2)
 
+        print(self.keyboard_width, self.keyboard_height )
+
         if x_pos != 0:
             self.x_pos = x_pos
         else:
-            self.x_pos = int((self.parent.width() - self.keyboard_width) / 2)
-
+            self.x_pos = 0
         if y_pos != 0:
             self.y_pos = y_pos
-        elif self.source.pos().y() + self.source.size().height() > self.parent.height() / 2:
-            self.y_pos = 0
         else:
-            self.y_pos = self.parent.height() - self.keyboard_height
+            self.y_pos = 0
+
 
         self.move_up = False
         # self.global_layout = QtWidgets.QVBoxLayout(parent)
@@ -72,10 +71,10 @@ class AlphaNumericVirtualKeyboard(QtWidgets.QWidget):
         self.animation_signal = AnimationSignal()
         self.animation_signal_for_close = AnimationSignal()
         self.callback_method = None
-        self.back_button = KeyboardButton("Backspace", self)
-        self.caps_button = KeyboardButton("Caps", self)
-        self.symbol_button = KeyboardButton("?!@#", self)
-        self.close_button = KeyboardButton("Close", self)
+        self.back_button = None
+        self.caps_button = None
+        self.symbol_button = None
+        self.close_button = None
         self.symbol_state = False
         self.caps_state = False
         self.is_hidden = True
@@ -167,7 +166,7 @@ class AlphaNumericVirtualKeyboard(QtWidgets.QWidget):
                     button = self.array_buttons[line_index][key_index]
                     button.setText(key)
 
-    def display(self, source=None, event=None, ui_scroll=None, close_button_enable=False, call_back=None, constraint=0,
+    def display(self, source, event=None, ui_scroll=None, close_button_enable=False, call_back=None, constraint=0,
                 move_up=False):
         """ AlphaNumericVirtualKeyboard class method to display virtual keypad
 
@@ -188,6 +187,17 @@ class AlphaNumericVirtualKeyboard(QtWidgets.QWidget):
         move_up:  , optional
         
         """
+        self.source = source
+        if self.x_pos == 0:
+            self.x_pos = int((self.parent.width() - self.keyboard_width) / 2)
+
+        if self.y_pos == 0 and self.source.pos().y() + self.source.size().height() > self.parent.height() / 2:
+            self.y_pos = 0
+        else:
+            self.y_pos = self.parent.height() - self.keyboard_height
+
+        self.setWindowFlags(Qt.WindowStaysOnTopHint)
+        self.setWindowState(Qt.WindowState.WindowActive)
         self.move_up = move_up
         if ui_scroll:
             self.close_ui_scroll = ui_scroll
@@ -208,6 +218,7 @@ class AlphaNumericVirtualKeyboard(QtWidgets.QWidget):
                         self.keys_layout.addWidget(button, line_index, 8, 1, 2)
                         button.key_button_clicked_signal.connect(lambda key: self._add_input_by_key(key))
                     elif key == 'Backspace':
+                        self.back_button = KeyboardButton("Backspace", self)
                         self.array_buttons[line_index][key_index] = self.back_button
                         self.keys_layout.addWidget(self.back_button, line_index, key_index, 1, 2)
                         self.backspace_signal.signal.connect(self._backspace)
@@ -215,6 +226,7 @@ class AlphaNumericVirtualKeyboard(QtWidgets.QWidget):
                         self.back_button.mouseReleaseEvent = self._backspace_release_event
                         self.back_button.mouseDoubleClickEvent = self._backspace_double_click
                     elif key == 'Caps':
+                        self.caps_button = KeyboardButton("Caps", self)
                         self.array_buttons[line_index][key_index] = self.caps_button
                         self.keys_layout.addWidget(self.caps_button, line_index, key_index)
                         self.caps_button.key_button_clicked_signal.connect(self._convert_to_caps)
@@ -223,10 +235,12 @@ class AlphaNumericVirtualKeyboard(QtWidgets.QWidget):
                                 "background-color:rgb(29, 150, 255);border: 3px solid #8f8f91;border-radius: 8px;" +
                                 "min-height:42px; max-height: 42px; width: 120px;")
                     elif key == 'Close':
+                        self.close_button = KeyboardButton("Close", self)
                         self.array_buttons[line_index][key_index] = self.close_button
                         self.keys_layout.addWidget(self.close_button, line_index, 7)
                         self.close_button.key_button_clicked_signal.connect(self._close_handler)
                     elif key == 'Sym':
+                        self.symbol_button = KeyboardButton("?!@#", self)
                         self.array_buttons[line_index][key_index] = self.symbol_button
                         self.keys_layout.addWidget(self.symbol_button, line_index, 6)
                         self.symbol_button.key_button_clicked_signal.connect(self._open_symbol)
@@ -431,17 +445,18 @@ class AlphaNumericVirtualKeyboard(QtWidgets.QWidget):
             event handle raised by resize event
 
         """
-        painter = QtGui.QPainter()
-        painter.begin(self)
-        painter.setRenderHint(QPainter.Antialiasing)
-        path = QtGui.QPainterPath()
-        path.addRoundedRect(QtCore.QRectF(self.rect()), 10, 10)
-        QtGui.QRegion(path.toFillPolygon(QtGui.QTransform()).toPolygon())
-        pen = QtGui.QPen(Qt.gray, 1)
-        painter.setPen(pen)
-        painter.fillPath(path, Qt.gray)
-        painter.drawPath(path)
-        painter.end()
+        if not self.is_hidden:
+            painter = QtGui.QPainter()
+            painter.begin(self)
+            painter.setRenderHint(QPainter.Antialiasing)
+            path = QtGui.QPainterPath()
+            path.addRoundedRect(QtCore.QRectF(self.rect()), 10, 10)
+            QtGui.QRegion(path.toFillPolygon(QtGui.QTransform()).toPolygon())
+            pen = QtGui.QPen(Qt.gray, 1)
+            painter.setPen(pen)
+            painter.fillPath(path, Qt.gray)
+            painter.drawPath(path)
+            painter.end()
 
     def resizeEvent(self, event):
         """ Overrides method in QtGui.QWidget
