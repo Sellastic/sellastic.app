@@ -20,7 +20,6 @@ class TextBox(QLineEdit):
 
     def focusInEvent(self, event):
         if self.keyboard and self.keyboard.is_hidden:
-            print(self.filed_name)
             self.keyboard.display(source=self)
             event.accept()
 

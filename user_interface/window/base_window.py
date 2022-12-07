@@ -12,7 +12,7 @@ class BaseWindow(QMainWindow):
         self.setWindowFlags(Qt.FramelessWindowHint)
         self.app = app
 
-        self.keyboard = None
+        self.keyboard = AlphaNumericVirtualKeyboard(source=None, parent=self)
 
     def draw_window(self, settings: dict, design: list):
         self.setUpdatesEnabled(False)
@@ -25,8 +25,6 @@ class BaseWindow(QMainWindow):
         self.move(0, 0)
         self.setFixedSize(settings["width"], settings["height"])
 
-        self.keyboard = AlphaNumericVirtualKeyboard(source=None, parent=self)
-
         if settings["toolbar"]:
             self._create_toolbar()
         if settings["statusbar"]:
@@ -35,8 +33,12 @@ class BaseWindow(QMainWindow):
         for control_design_data in design:
             if control_design_data["type"] == "textbox":
                 self._create_textbox(control_design_data)
+
             if control_design_data["type"] == "button":
                 self._create_button(control_design_data)
+
+        self.keyboard.resize_from_parent()
+
         self.setUpdatesEnabled(True)
 
         for item in self.children():

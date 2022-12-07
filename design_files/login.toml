@@ -15,12 +15,12 @@ caption = "User Name"
 input_type = "alphanumeric"
 field_name = "user_name"
 alignment = "center"
-font_size = 30
+font_size = 20
 background_color = 0xFFFFFF
 foreground_color = 0x000000
 width = 300
 height = 50
-location_x = 400
+location_x = 362
 location_y = 200
 
 [[design]]
@@ -34,7 +34,7 @@ background_color = 0xFFFFFF
 foreground_color = 0x000000
 width = 300
 height = 50
-location_x = 400
+location_x = 362
 location_y = 300
 
 [[design]]
@@ -45,7 +45,7 @@ background_color = 0x003366
 foreground_color = 0xFFFFFF
 width = 250
 height = 50
-location_x = 425
+location_x = 387
 location_y = 400
 
 [[design]]
@@ -56,5 +56,5 @@ background_color = 0xFF0000
 foreground_color = 0xFFFFFF
 width = 200
 height = 50
-location_x = 450
+location_x = 412
 location_y = 500

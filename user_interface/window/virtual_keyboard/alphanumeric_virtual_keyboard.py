@@ -1,7 +1,7 @@
 from PySide6 import QtWidgets, QtCore, QtGui
 from PySide6.QtCore import Qt, QEvent
 from PySide6.QtGui import QPainter
-from PySide6.QtWidgets import QSizePolicy, QLineEdit
+from PySide6.QtWidgets import QSizePolicy, QLineEdit, QWidget
 
 from user_interface.window.virtual_keyboard.key_animation_thread import KeyAnimationThread
 from user_interface.window.virtual_keyboard.key_press_handler_thread import KeyPressHandlerThread
@@ -9,7 +9,7 @@ from user_interface.window.virtual_keyboard.keyboard_button import KeyboardButto
 from user_interface.window.virtual_keyboard.signal import BackSpaceSignal, AnimationSignal
 
 
-class AlphaNumericVirtualKeyboard(QtWidgets.QWidget):
+class AlphaNumericVirtualKeyboard(QWidget):
     """ AlphaNumericVirtualKeyboard class
     """
 
@@ -43,14 +43,6 @@ class AlphaNumericVirtualKeyboard(QtWidgets.QWidget):
         self.keyboard_width = width
         self.keyboard_height = height
 
-        if self.parent.width() < self.keyboard_width:
-            self.keyboard_width = self.parent.width()
-
-        if self.parent.height() / 2 < self.keyboard_height:
-            self.keyboard_height = int(self.parent.height() / 2)
-
-        print(self.keyboard_width, self.keyboard_height )
-
         if x_pos != 0:
             self.x_pos = x_pos
         else:
@@ -59,7 +51,6 @@ class AlphaNumericVirtualKeyboard(QtWidgets.QWidget):
             self.y_pos = y_pos
         else:
             self.y_pos = 0
-
 
         self.move_up = False
         # self.global_layout = QtWidgets.QVBoxLayout(parent)
@@ -457,6 +448,13 @@ class AlphaNumericVirtualKeyboard(QtWidgets.QWidget):
             painter.fillPath(path, Qt.gray)
             painter.drawPath(path)
             painter.end()
+
+    def resize_from_parent(self):
+        if self.parent.width() < self.keyboard_width:
+            self.keyboard_width = self.parent.width()
+
+        if self.parent.height() / 2 < self.keyboard_height:
+            self.keyboard_height = int(self.parent.height() / 2)
 
     def resizeEvent(self, event):
         """ Overrides method in QtGui.QWidget
