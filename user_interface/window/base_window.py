@@ -55,18 +55,21 @@ class BaseWindow(QMainWindow):
 
     def clear(self):
         for item in self.children():
-            item.deleteLater()
+            print(item)
+            if type(item) in [TextBox, Button]:
+                print(type(item), item)
+                item.deleteLater()
 
     def _create_button(self, design_data):
         print(design_data)
         button = Button(design_data["caption"], self)
-
         button.setGeometry(design_data["location_x"], design_data["location_y"],
                            design_data["width"], design_data["height"])
 
         button.set_color(design_data['background_color'], design_data['foreground_color'])
         button.setToolTip(design_data["caption"])
         button.clicked.connect(self.app.event_distributor(design_data["function"]))
+        print(button.parent())
 
     def _create_textbox(self, design_data):
         print(design_data)
