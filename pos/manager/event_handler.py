@@ -14,6 +14,10 @@ class EventHandler(GeneralEvent, ReportEvent, SaleEvent, SettingEvent):
                 function_object = self._login
             case EventName.LOGOUT.name:
                 function_object = self._logout
+            case EventName.SALE.name:
+                function_object = self._sale
+            case EventName.BACK.name:
+                function_object = self._back
         return function_object
 
 

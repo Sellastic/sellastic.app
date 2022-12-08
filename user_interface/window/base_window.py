@@ -37,10 +37,12 @@ class BaseWindow(QMainWindow):
             if control_design_data["type"] == "button":
                 self._create_button(control_design_data)
 
-        self.keyboard.resize_from_parent()
-
         self.setUpdatesEnabled(True)
 
+        self.keyboard.resize_from_parent()
+        self.keyboard.raise_()
+
+    def focus_text_box(self):
         for item in self.children():
             if type(item) is TextBox:
                 item.setFocus()
@@ -59,6 +61,8 @@ class BaseWindow(QMainWindow):
             if type(item) in [TextBox, Button]:
                 print(type(item), item)
                 item.deleteLater()
+                item.setParent(None)
+        self.hide()
 
     def _create_button(self, design_data):
         print(design_data)
@@ -69,7 +73,6 @@ class BaseWindow(QMainWindow):
         button.set_color(design_data['background_color'], design_data['foreground_color'])
         button.setToolTip(design_data["caption"])
         button.clicked.connect(self.app.event_distributor(design_data["function"]))
-        print(button.parent())
 
     def _create_textbox(self, design_data):
         print(design_data)
@@ -87,7 +90,8 @@ class BaseWindow(QMainWindow):
                             design_data["width"], design_data["height"])
         textbox.set_font_size(design_data.get('font_size'))
         textbox.filed_name = design_data.get('caption')
-        textbox.setPlaceholderText(textbox.filed_name)
+        if design_data.get('place_holder'):
+            textbox.setPlaceholderText(design_data.get('place_holder'))
         p = textbox.palette()
         p.setColor(textbox.backgroundRole(), design_data['background_color'])
         p.setColor(textbox.foregroundRole(), design_data['foreground_color'])

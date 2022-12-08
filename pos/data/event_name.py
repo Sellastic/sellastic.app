@@ -6,3 +6,5 @@ class EventName(Enum):
     EXIT_APPLICATION = auto()
     LOGIN = auto()
     LOGOUT = auto()
+    SALE = auto()
+    BACK = auto()

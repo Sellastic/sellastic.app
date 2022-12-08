@@ -12,6 +12,7 @@ height = 768
 [[design]]
 type = "textbox"
 caption = "User Name"
+place_holder = "User Name"
 input_type = "alphanumeric"
 field_name = "user_name"
 alignment = "center"
@@ -26,6 +27,7 @@ location_y = 200
 [[design]]
 type = "textbox"
 caption = "Password"
+place_holder = "Password"
 input_type = "password"
 field_name = "password"
 alignment = "center"

@@ -4,6 +4,7 @@ from pos.data import DisplayType, DocumentState, DocumentType, DocumentResult
 class CurrentStatus:
     def __init__(self):
         self.__login_succeed = False
+        self.__previous_display_type = DisplayType.NONE
         self.__current_display_type = DisplayType.LOGIN     # initial display
         self.__document_state = DocumentState.NONE
         self.__document_type = DocumentType.NONE
@@ -24,10 +25,19 @@ class CurrentStatus:
 
     @current_display_type.setter
     def current_display_type(self, value):
+        self.__previous_display_type = self.__current_display_type
         if value != DisplayType.LOGIN and self.__login_succeed is False:
             self.__current_display_type = DisplayType.LOGIN
         elif type(value) is DisplayType:
             self.__current_display_type = value
+
+    @property
+    def previous_display_type(self):
+        return self.__previous_display_type
+
+    @previous_display_type.setter
+    def previous_display_type(self, value):
+        self.__previous_display_type = value
 
     @property
     def document_state(self):

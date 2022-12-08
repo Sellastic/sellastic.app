@@ -2,6 +2,7 @@ from enum import Enum, auto
 
 
 class DisplayType(Enum):
+    NONE = auto()
     LOGIN = auto()
     MENU = auto()
     SALE = auto()

@@ -35,3 +35,19 @@ class GeneralEvent:
         self.login_succeed = False
         self.current_display_type = DisplayType.LOGIN
         self.interface.redraw(self.current_display_type)
+
+    def _sale(self):
+        if self.login_succeed:
+            self.current_display_type = DisplayType.SALE
+            self.interface.redraw(self.current_display_type)
+        else:
+            self._logout()
+
+    def _back(self):
+        if self.login_succeed:
+            temp_display_type = self.current_display_type
+            self.current_display_type = self.previous_display_type
+            self.previous_display_type = temp_display_type
+            self.interface.redraw(self.current_display_type)
+        else:
+            self._logout()

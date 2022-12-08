@@ -1,0 +1,21 @@
+[settings]
+name = "Sale"
+functionality = "SALE"
+login_required = true
+toolbar = true
+statusbar = true
+background_color = 0x3268A8
+foreground_color = 0x000000
+width = 1024
+height = 768
+
+[[design]]
+type = "button"
+caption = "Back"
+function = "BACK"
+background_color = 0x778D45
+foreground_color = 0xFFFFFF
+width = 200
+height = 50
+location_x = 412
+location_y = 200
