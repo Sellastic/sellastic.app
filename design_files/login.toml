@@ -22,7 +22,8 @@ foreground_color = 0x000000
 width = 300
 height = 50
 location_x = 362
-location_y = 200
+location_y = 150
+use_keyboard = true
 
 [[design]]
 type = "textbox"
@@ -37,7 +38,9 @@ foreground_color = 0x000000
 width = 300
 height = 50
 location_x = 362
-location_y = 300
+location_y = 225
+use_keyboard = false
+
 
 [[design]]
 type = "button"
@@ -48,7 +51,7 @@ foreground_color = 0xFFFFFF
 width = 250
 height = 50
 location_x = 387
-location_y = 400
+location_y = 300
 
 [[design]]
 type = "button"
@@ -59,4 +62,4 @@ foreground_color = 0xFFFFFF
 width = 200
 height = 50
 location_x = 412
-location_y = 500
+location_y = 400

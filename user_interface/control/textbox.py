@@ -22,14 +22,15 @@ class TextBox(QLineEdit):
     def focusInEvent(self, event):
         if self.__keyboard and self.__keyboard.is_hidden:
             self.__keyboard.display(source=self)
-            self.repaint()
-            event.accept()
+            self.__keyboard.raise_()
+        self.repaint()
+        event.accept()
 
     def focusOutEvent(self, event):
         if self.keyboard:
             self.keyboard.hide()
-            self.repaint()
-            event.accept()
+        self.repaint()
+        event.accept()
 
     @property
     def keyboard(self):

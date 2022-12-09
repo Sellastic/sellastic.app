@@ -96,7 +96,8 @@ class BaseWindow(QMainWindow):
         p.setColor(textbox.backgroundRole(), design_data['background_color'])
         p.setColor(textbox.foregroundRole(), design_data['foreground_color'])
         textbox.setPalette(p)
-        textbox.keyboard = self.keyboard
+        if design_data['use_keyboard']:
+            textbox.keyboard = self.keyboard
 
     def _create_toolbar(self):
         tools = QToolBar()
