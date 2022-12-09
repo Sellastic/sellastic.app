@@ -8,7 +8,9 @@ class Button(QPushButton):
         self.setFont(QFont("Verdana", 20))
 
     def set_color(self, background_color, foreground_color):
-        self.setStyleSheet(f"QPushButton {{background-color: #{background_color:06X}; color: #{foreground_color:06X};}}")
+        self.setStyleSheet(f"QPushButton {{background-color: #{background_color:06X};" +
+                           f"color: #{foreground_color:06X};border-radius: 4px;}}")
 
     def set_event(self, function):
         self.click()
+

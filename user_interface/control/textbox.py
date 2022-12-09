@@ -7,6 +7,7 @@ class TextBox(QLineEdit):
         super().__init__(*args, **kwargs)
 
         self.setFont(QFont("Verdana", 20))
+        self.setStyleSheet("QLineEdit {border-radius: 4px;}")
 
         self.filed_name = ""
         self.__keyboard = None
