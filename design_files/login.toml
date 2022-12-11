@@ -39,7 +39,7 @@ width = 300
 height = 50
 location_x = 362
 location_y = 225
-use_keyboard = false
+use_keyboard = true
 
 
 [[design]]
