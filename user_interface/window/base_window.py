@@ -7,7 +7,7 @@ from user_interface.window.virtual_keyboard import AlphaNumericVirtualKeyboard
 
 
 class BaseWindow(QMainWindow):
-    def __init__(self, app, display_type="main_display"):
+    def __init__(self, app):
         super().__init__(parent=None)
         self.setWindowFlags(Qt.FramelessWindowHint)
         self.app = app
