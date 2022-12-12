@@ -37,6 +37,11 @@ class Interpreter:
                 'height': 640}
 
     @property
+    def toolbar_settings(self):
+        design_data = self.__design_file_data.get("toolbar_settings")
+        return design_data
+
+    @property
     def design(self):
         design_data = self.__design_file_data.get("design")
         return design_data

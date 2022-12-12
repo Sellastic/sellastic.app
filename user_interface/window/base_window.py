@@ -1,7 +1,7 @@
-from PySide6.QtWidgets import QMainWindow, QStatusBar, QToolBar
+from PySide6.QtWidgets import QMainWindow, QStatusBar
 from PySide6.QtCore import Qt
 
-from user_interface.control import TextBox, Button
+from user_interface.control import TextBox, Button, ToolBar
 from user_interface.control import AlphaNumericVirtualKeyboard
 
 
@@ -13,7 +13,7 @@ class BaseWindow(QMainWindow):
 
         self.keyboard = AlphaNumericVirtualKeyboard(source=None, parent=self)
 
-    def draw_window(self, settings: dict, design: list):
+    def draw_window(self, settings: dict, toolbar_settings: dict, design: list):
         self.setUpdatesEnabled(False)
         p = self.palette()
         p.setColor(self.backgroundRole(), settings['background_color'])
@@ -25,7 +25,7 @@ class BaseWindow(QMainWindow):
         self.setFixedSize(settings["width"], settings["height"])
 
         if settings["toolbar"]:
-            self._create_toolbar()
+            self._create_toolbar(toolbar_settings)
         if settings["statusbar"]:
             self._create_status_bar()
 
@@ -57,7 +57,7 @@ class BaseWindow(QMainWindow):
     def clear(self):
         for item in self.children():
             print(item)
-            if type(item) in [TextBox, Button]:
+            if type(item) in [TextBox, Button, ToolBar]:
                 print(type(item), item)
                 item.deleteLater()
                 item.setParent(None)
@@ -98,9 +98,12 @@ class BaseWindow(QMainWindow):
         if design_data['use_keyboard']:
             textbox.keyboard = self.keyboard
 
-    def _create_toolbar(self):
-        tools = QToolBar()
-        tools.addAction("Exit", self.close)
+    def _create_toolbar(self, design_data):
+        tools = ToolBar()
+        print(design_data)
+        if "button" in design_data and "back" in design_data["button"]:
+            tools.add_event(back_function_caption=design_data["button"]["back"],
+                            back_function=self.app.event_distributor("BACK"))
         self.addToolBar(tools)
 
     def _create_status_bar(self):
