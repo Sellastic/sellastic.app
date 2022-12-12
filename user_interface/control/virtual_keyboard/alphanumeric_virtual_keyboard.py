@@ -3,10 +3,10 @@ from PySide6.QtCore import Qt, QEvent
 from PySide6.QtGui import QPainter
 from PySide6.QtWidgets import QSizePolicy, QLineEdit, QWidget
 
-from user_interface.window.virtual_keyboard.key_animation_thread import KeyAnimationThread
-from user_interface.window.virtual_keyboard.key_press_handler_thread import KeyPressHandlerThread
-from user_interface.window.virtual_keyboard.keyboard_button import KeyboardButton
-from user_interface.window.virtual_keyboard.signal import BackSpaceSignal, AnimationSignal
+from user_interface.control.virtual_keyboard.key_animation_thread import KeyAnimationThread
+from user_interface.control.virtual_keyboard.key_press_handler_thread import KeyPressHandlerThread
+from user_interface.control.virtual_keyboard.keyboard_button import KeyboardButton
+from user_interface.control.virtual_keyboard.signal import BackSpaceSignal, AnimationSignal
 
 
 class AlphaNumericVirtualKeyboard(QWidget):

@@ -1,9 +1,8 @@
-from PySide6 import QtGui
 from PySide6.QtWidgets import QMainWindow, QStatusBar, QToolBar
 from PySide6.QtCore import Qt
 
 from user_interface.control import TextBox, Button
-from user_interface.window.virtual_keyboard import AlphaNumericVirtualKeyboard
+from user_interface.control import AlphaNumericVirtualKeyboard
 
 
 class BaseWindow(QMainWindow):
