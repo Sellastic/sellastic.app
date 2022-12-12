@@ -10,7 +10,7 @@ width = 1024
 height = 768
 
 [toolbar_settings]
-button.back = "Back"
+button.back = { caption = "Back", image = "back.png" }
 
 [[design]]
 type = "button"

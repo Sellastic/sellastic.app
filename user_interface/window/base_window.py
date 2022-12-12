@@ -102,7 +102,8 @@ class BaseWindow(QMainWindow):
         tools = ToolBar()
         print(design_data)
         if "button" in design_data and "back" in design_data["button"]:
-            tools.add_event(back_function_caption=design_data["button"]["back"],
+            tools.add_event(back_function_caption=design_data["button"]["back"]["caption"],
+                            back_function_image=design_data["button"]["back"]["image"],
                             back_function=self.app.event_distributor("BACK"))
         self.addToolBar(tools)
 
