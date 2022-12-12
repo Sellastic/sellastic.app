@@ -53,6 +53,13 @@ It has modules for easily integrate it to different payment systems, loyalty sys
 - [ ] Reports Module
 - [ ] Screen Designer App
 
+### Contributors
+
+Thanks to our [contributors](https://github.com/Sellastic/sellastic.app/graphs/contributors)
+
++ [Ferhat Mousavi](https://github.com/ferhat-mousavi)
++ [Ezgi Özgür](https://github.com/ezgii-ozgur)
+
 
 ### Donation and Support 
 If you like the project and want to support it or if you want to contribute to the development of new modules, you can donate to the following crypto addresses.
