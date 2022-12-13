@@ -1,3 +1,5 @@
+import os
+import sys
 import tomllib
 
 
@@ -58,3 +60,9 @@ class Setting:
         if self.design_files_list["customer_display"]:
             return self.design_files_list["customer_display"]
         return None
+
+    @property
+    def image_absolute_folder(self):
+        project_path = os.path.dirname(os.path.abspath(sys.modules['__main__'].__file__))
+        image_path = os.path.join(project_path, 'design_files', 'images')
+        return image_path

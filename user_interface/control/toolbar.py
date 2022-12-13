@@ -5,6 +5,8 @@ from PySide6.QtCore import QSize
 from PySide6.QtWidgets import QToolBar
 from PySide6.QtGui import QFont, Qt, QIcon
 
+from setting import env_data
+
 
 class ToolBar(QToolBar):
     def __init__(self, *args, **kwargs):
@@ -20,7 +22,6 @@ class ToolBar(QToolBar):
             if kwargs["back_function_image"] == "":
                 self.addAction(kwargs["back_function_caption"], kwargs["back_function"])
             else:
-                project_path = os.path.dirname(os.path.abspath(sys.modules['__main__'].__file__))
-                image_path = os.path.join(project_path, 'design_files', 'images', kwargs["back_function_image"])
+                image_path = os.path.join(env_data.image_absolute_folder, kwargs["back_function_image"])
                 self.addAction(QIcon(image_path), kwargs["back_function_caption"], kwargs["back_function"])
 
