@@ -20,7 +20,7 @@ width = 1024
 height = 768
 
 [design_files]
-main_display.login = "sale.toml"
+main_display.login = "login.toml"
 customer_display.login = "login.toml"
 main_display.menu = "menu.toml"
 customer_display.menu = "menu.toml"
