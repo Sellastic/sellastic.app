@@ -1,7 +1,7 @@
 from PySide6.QtWidgets import QMainWindow, QStatusBar
 from PySide6.QtCore import Qt
 
-from user_interface.control import TextBox, Button, ToolBar
+from user_interface.control import TextBox, Button, ToolBar, StatusBar
 from user_interface.control import AlphaNumericVirtualKeyboard
 
 
@@ -57,7 +57,7 @@ class BaseWindow(QMainWindow):
     def clear(self):
         for item in self.children():
             print(item)
-            if type(item) in [TextBox, Button, ToolBar]:
+            if type(item) in [TextBox, Button, ToolBar, StatusBar]:
                 print(type(item), item)
                 item.deleteLater()
                 item.setParent(None)
@@ -100,7 +100,6 @@ class BaseWindow(QMainWindow):
 
     def _create_toolbar(self, design_data):
         tools = ToolBar()
-        print(design_data)
         if "button" in design_data and "back" in design_data["button"]:
             tools.add_event(back_function_caption=design_data["button"]["back"]["caption"],
                             back_function_image=design_data["button"]["back"]["image"],
@@ -108,8 +107,7 @@ class BaseWindow(QMainWindow):
         self.addToolBar(tools)
 
     def _create_status_bar(self):
-        status = QStatusBar()
-        status.showMessage("Status Bar")
-        self.setStatusBar(status)
+        statusbar = StatusBar()
+        self.setStatusBar(statusbar)
 
 
