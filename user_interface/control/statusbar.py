@@ -1,4 +1,6 @@
+from PySide6 import QtGui
 from PySide6.QtCore import QTimer, Slot, QDateTime
+from PySide6.QtGui import QFont, QPalette, QColor, Qt
 from PySide6.QtWidgets import QStatusBar, QLabel
 
 
@@ -6,14 +8,12 @@ class StatusBar(QStatusBar):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.setStyleSheet(
-            """QStatusBar {
+            """
                 padding-left:8px;
                 padding-right:8px;
                 background:gray;
                 color:black;
-                font-family:'Times New Roman';
-                font-size:16pt;
-            }
+                font: 12pt \"Consolas\";
             """)
         date_time_timer = QTimer(self, interval=1000, timeout=self.show_date_time)
         date_time_timer.start()
