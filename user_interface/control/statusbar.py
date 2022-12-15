@@ -9,8 +9,6 @@ class StatusBar(QStatusBar):
         super().__init__(*args, **kwargs)
         self.setStyleSheet(
             """
-                padding-left:8px;
-                padding-right:8px;
                 background:gray;
                 color:black;
                 font: 12pt \"Consolas\";
