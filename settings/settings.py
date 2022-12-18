@@ -3,7 +3,7 @@ import sys
 import tomllib
 
 
-class Setting:
+class Settings:
     __instance = None
 
     def __new__(cls, *args, **kwargs):

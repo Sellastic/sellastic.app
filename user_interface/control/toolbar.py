@@ -5,7 +5,7 @@ from PySide6.QtCore import QSize
 from PySide6.QtWidgets import QToolBar
 from PySide6.QtGui import QFont, Qt, QIcon
 
-from setting import env_data
+from settings import env_data
 
 
 class ToolBar(QToolBar):

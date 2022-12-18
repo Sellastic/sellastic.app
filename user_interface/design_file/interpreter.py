@@ -1,7 +1,7 @@
 import tomllib
 
 from pos.data import DisplayType
-from setting import env_data
+from settings import env_data
 
 
 class Interpreter:
@@ -58,7 +58,7 @@ class Interpreter:
             case DisplayType.SERVICE:
                 toml_file_name = f"design_files/{env_data.main_display_data['service']}"
             case DisplayType.SETTING:
-                toml_file_name = f"design_files/{env_data.main_display_data['setting']}"
+                toml_file_name = f"design_files/{env_data.main_display_data['settings']}"
             case DisplayType.PARAMETER:
                 toml_file_name = f"design_files/{env_data.main_display_data['parameter']}"
             case DisplayType.REPORT:
