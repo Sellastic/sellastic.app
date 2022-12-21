@@ -1,4 +1,4 @@
-from sqlalchemy import Column, Identity, BigInteger, String, Boolean, DateTime
+from sqlalchemy import Column, BigInteger, String, Boolean, DateTime
 from sqlalchemy.sql import func
 
 from data_layer.model.crud_model import Model
