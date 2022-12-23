@@ -4,3 +4,4 @@ from user_interface.control.textbox import TextBox
 from user_interface.control.button import Button
 from user_interface.control.toolbar import ToolBar
 from user_interface.control.statusbar import StatusBar
+from user_interface.control.label import Label
