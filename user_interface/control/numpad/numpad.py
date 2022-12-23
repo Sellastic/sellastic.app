@@ -1,0 +1,2 @@
+class NumPad:
+    pass
