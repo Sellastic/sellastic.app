@@ -1,7 +1,7 @@
 from PySide6.QtWidgets import QMainWindow, QStatusBar
 from PySide6.QtCore import Qt
 
-from user_interface.control import TextBox, Button, ToolBar, StatusBar
+from user_interface.control import TextBox, Button, ToolBar, StatusBar, NumPad
 from user_interface.control import AlphaNumericVirtualKeyboard
 
 
@@ -36,6 +36,9 @@ class BaseWindow(QMainWindow):
             if control_design_data["type"] == "button":
                 self._create_button(control_design_data)
 
+            if control_design_data["type"] == "numpad":
+                self._create_numpad(control_design_data)
+
         self.setUpdatesEnabled(True)
 
         self.keyboard.resize_from_parent()
@@ -57,7 +60,7 @@ class BaseWindow(QMainWindow):
     def clear(self):
         for item in self.children():
             print(item)
-            if type(item) in [TextBox, Button, ToolBar, StatusBar]:
+            if type(item) in [TextBox, Button, ToolBar, StatusBar, NumPad]:
                 print(type(item), item)
                 item.deleteLater()
                 item.setParent(None)
@@ -72,6 +75,15 @@ class BaseWindow(QMainWindow):
         button.set_color(design_data['background_color'], design_data['foreground_color'])
         button.setToolTip(design_data["caption"])
         button.clicked.connect(self.app.event_distributor(design_data["function"]))
+
+    def _create_numpad(self, design_data):
+        print(design_data)
+        numpad = NumPad(design_data["caption"], self)
+        numpad.setGeometry(design_data["location_x"], design_data["location_y"],
+                           design_data["width"], design_data["height"])
+
+        numpad.setToolTip(design_data["caption"])
+        numpad.set_function(self.app.event_distributor(design_data["function"]))
 
     def _create_textbox(self, design_data):
         print(design_data)
