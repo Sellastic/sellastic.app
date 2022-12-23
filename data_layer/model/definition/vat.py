@@ -1,4 +1,4 @@
-from sqlalchemy import Column, Integer, BigInteger, String, Boolean, DateTime, Float
+from sqlalchemy import Column, Integer, BigInteger, String, DateTime, Float, ForeignKey
 from sqlalchemy.sql import func
 
 from data_layer.model.crud_model import Model
@@ -22,6 +22,8 @@ class Vat(Model, CRUD):
     no = Column(Integer, nullable=False)
     rate = Column(Float, nullable=False)
     description = Column(String(100))
+    fk_cashier_create_id = Column(BigInteger, ForeignKey("cashier.id"))
+    fk_cashier_update_id = Column(BigInteger, ForeignKey("cashier.id"))
     created_at = Column(DateTime, server_default=func.now())
     updated_at = Column(DateTime, server_default=func.now())
 
