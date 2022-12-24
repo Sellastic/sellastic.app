@@ -17,6 +17,7 @@ It has modules for easily integrate it to different payment systems, loyalty sys
 > - Linux/Windows supported Touch Screen Devices (with one or two displays) 
 > - ESC/P printers
 > - 2D and 3D barcode readers 
+> - Weighing Scales
 >
 > ##### Software Requirements
 >
