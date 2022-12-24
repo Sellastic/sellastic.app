@@ -43,6 +43,13 @@ class GeneralEvent:
         else:
             self._logout()
 
+    def _configuration(self):
+        if self.login_succeed:
+            self.current_display_type = DisplayType.CONFIG
+            self.interface.redraw(self.current_display_type)
+        else:
+            self._logout()
+
     def _back(self):
         if self.login_succeed:
             temp_display_type = self.current_display_type

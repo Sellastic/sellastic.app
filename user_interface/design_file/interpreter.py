@@ -57,8 +57,8 @@ class Interpreter:
                 toml_file_name = f"design_files/{env_data.main_display_data['sale']}"
             case DisplayType.SERVICE:
                 toml_file_name = f"design_files/{env_data.main_display_data['service']}"
-            case DisplayType.SETTING:
-                toml_file_name = f"design_files/{env_data.main_display_data['settings']}"
+            case DisplayType.CONFIG:
+                toml_file_name = f"design_files/{env_data.main_display_data['config']}"
             case DisplayType.PARAMETER:
                 toml_file_name = f"design_files/{env_data.main_display_data['parameter']}"
             case DisplayType.REPORT:

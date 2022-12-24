@@ -1,4 +1,4 @@
-from PySide6.QtWidgets import QMainWindow, QStatusBar
+from PySide6.QtWidgets import QMainWindow
 from PySide6.QtCore import Qt
 
 from user_interface.control import TextBox, Button, ToolBar, StatusBar, NumPad
@@ -83,7 +83,7 @@ class BaseWindow(QMainWindow):
                            design_data["width"], design_data["height"])
 
         numpad.setToolTip(design_data["caption"])
-        numpad.set_function(self.app.event_distributor(design_data["function"]))
+        numpad.set_event(self.app.event_distributor(design_data["function"]))
 
     def _create_textbox(self, design_data):
         print(design_data)

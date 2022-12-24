@@ -7,7 +7,7 @@ class DisplayType(Enum):
     MENU = auto()
     SALE = auto()
     SERVICE = auto()
-    SETTING = auto()
+    CONFIG = auto()
     PARAMETER = auto()
     REPORT = auto()
     FUNCTION = auto()

@@ -1,6 +1,6 @@
 [settings]
-name = "Settings"
-functionality = "SETTINGS"
+name = "Configuration"
+functionality = "CONFIG"
 login_required = true
 toolbar = false
 statusbar = false

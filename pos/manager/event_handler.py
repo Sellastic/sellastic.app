@@ -1,8 +1,8 @@
 from pos.data import EventName
-from pos.manager.event import GeneralEvent, ReportEvent, SaleEvent, SettingEvent
+from pos.manager.event import GeneralEvent, ReportEvent, SaleEvent, ConfigurationEvent
 
 
-class EventHandler(GeneralEvent, ReportEvent, SaleEvent, SettingEvent):
+class EventHandler(GeneralEvent, ReportEvent, SaleEvent, ConfigurationEvent):
     def event_distributor(self, event_name):
         function_object = None
         match event_name:
@@ -16,6 +16,8 @@ class EventHandler(GeneralEvent, ReportEvent, SaleEvent, SettingEvent):
                 function_object = self._logout
             case EventName.SALE.name:
                 function_object = self._sale
+            case EventName.CONFIG.name:
+                function_object = self._configuration
             case EventName.BACK.name:
                 function_object = self._back
         return function_object
