@@ -20,7 +20,7 @@ class Vat(Model, CRUD):
     id = Column(BigInteger, primary_key=True, autoincrement=True, default=1)
     name = Column(String(50), nullable=False)
     no = Column(Integer, nullable=False)
-    rate = Column(Float, nullable=False)
+    rate = Column(Integer, nullable=False)
     description = Column(String(100))
     fk_cashier_create_id = Column(BigInteger, ForeignKey("cashier.id"))
     fk_cashier_update_id = Column(BigInteger, ForeignKey("cashier.id"))
