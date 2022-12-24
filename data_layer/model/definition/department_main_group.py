@@ -33,4 +33,4 @@ class DepartmentMainGroup(Model, CRUD):
     updated_at = Column(DateTime, server_default=func.now())
 
     def __repr__(self):
-        return f"<StockUnit(name='{self.name}', no='{self.no}', description='{self.description}')>"
+        return f"<DepartmentMainGroup(name='{self.name}', no='{self.no}', description='{self.description}')>"

@@ -36,5 +36,5 @@ class Cashier(Model, CRUD):
     updated_at = Column(DateTime, server_default=func.now())
 
     def __repr__(self):
-        return f"<User(name='{self.name}', last_name='{self.last_name}', user_name='{self.user_name}')>"
+        return f"<Cashier(name='{self.name}', last_name='{self.last_name}', user_name='{self.user_name}')>"
 
