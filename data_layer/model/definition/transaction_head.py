@@ -19,6 +19,7 @@ class TransactionHead(Model, CRUD):
     pos_id = Column(Integer, nullable=False)
     transaction_date_time = Column(DateTime, server_default=func.now(), nullable=False)
     document_type = Column(String(50), nullable=False)
+    fk_customer_id = Column(BigInteger, ForeignKey("customer.id"))
     receipt_number = Column(Integer, nullable=False)
     batch_number = Column(Integer, nullable=False)
     total_amount = Column(Integer, nullable=False)

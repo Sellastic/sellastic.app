@@ -2,6 +2,7 @@ from data_layer.model import metadata
 from data_layer.engine import Engine
 
 from data_layer.model import Cashier
+from data_layer.model import Customer
 from data_layer.model import Store
 from data_layer.model import Vat
 from data_layer.model import ProductUnit
