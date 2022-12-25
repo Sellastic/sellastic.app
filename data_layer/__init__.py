@@ -7,6 +7,9 @@ from data_layer.model import Vat
 from data_layer.model import ProductUnit
 from data_layer.model import DepartmentMainGroup
 from data_layer.model import DepartmentSubGroup
+from data_layer.model import Product
+from data_layer.model import ProductBarcode
+from data_layer.model import ProductBarcodeMask
 
 
 def init_db():

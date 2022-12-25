@@ -29,7 +29,7 @@ class Product(Model, CRUD):
     purchase_price = Column(Float, nullable=True)
     price = Column(Float, nullable=False)
     discount_rate = Column(Float, nullable=False)
-    stock_number = Column(Integer, nullable=False)
+    quantity = Column(Integer, nullable=False)
     alert_min_stock_number = Column(Integer, nullable=False)
     alert_max_stock_number = Column(Integer, nullable=False)
     fk_vat_id = Column(BigInteger, ForeignKey("vat.id"))
