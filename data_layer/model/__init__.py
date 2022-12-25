@@ -14,4 +14,6 @@ from data_layer.model.definition.transaction_head import TransactionHead
 from data_layer.model.definition.transaction_head_temp import TransactionHeadTemp
 from data_layer.model.definition.transaction_product import TransactionProduct
 from data_layer.model.definition.transaction_product_temp import TransactionProductTemp
+from data_layer.model.definition.transaction_total import TransactionTotal
+from data_layer.model.definition.transaction_total_temp import TransactionTotalTemp
 

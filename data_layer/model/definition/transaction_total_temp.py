@@ -5,15 +5,15 @@ from data_layer.model.crud_model import Model
 from data_layer.model.crud_model import CRUD
 
 
-class TransactionTotal(Model, CRUD):
+class TransactionTotalTemp(Model, CRUD):
     def __init__(self):
         Model.__init__(self)
         CRUD.__init__(self)
 
-    __tablename__ = "transaction_total"
+    __tablename__ = "transaction_total_temp"
 
     id = Column(BigInteger, primary_key=True, autoincrement=True, default=1)
-    fk_transaction_head_id = Column(BigInteger, ForeignKey("transaction_head.id"))
+    fk_transaction_head_id = Column(BigInteger, ForeignKey("transaction_head_temp.id"))
     line_no = Column(Integer, nullable=False)
     fk_department_main_group_id = Column(BigInteger, ForeignKey("department_main_group.id"), nullable=False)
     total_department = Column(Float, nullable=False)
@@ -26,4 +26,4 @@ class TransactionTotal(Model, CRUD):
     updated_at = Column(DateTime, server_default=func.now())
 
     def __repr__(self):
-        return f"<TransactionTotal(total_department='{self.total_department}', total_department_vat='{self.total_department_vat}')>"
+        return f"<TransactionTotalTemp(total_department='{self.total_department}', total_department_vat='{self.total_department_vat}')>"
