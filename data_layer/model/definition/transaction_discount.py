@@ -5,23 +5,23 @@ from data_layer.model.crud_model import Model
 from data_layer.model.crud_model import CRUD
 
 
-class TransactionPaymentTemp(Model, CRUD):
+class TransactionDiscount(Model, CRUD):
     def __init__(self):
         Model.__init__(self)
         CRUD.__init__(self)
 
-    __tablename__ = "transaction_payment_temp"
+    __tablename__ = "transaction_discount"
 
     id = Column(BigInteger, primary_key=True, autoincrement=True, default=1)
-    fk_transaction_head_id = Column(BigInteger, ForeignKey("transaction_head_temp.id"))
+    fk_transaction_head_id = Column(BigInteger, ForeignKey("transaction_head.id"))
+    fk_transaction_product_id = Column(BigInteger, ForeignKey("transaction_product.id"), nullable=True)
+    fk_transaction_payment_id = Column(BigInteger, ForeignKey("transaction_payment.id"), nullable=True)
+    fk_transaction_total_id = Column(BigInteger, ForeignKey("transaction_total.id"), nullable=True)
     line_no = Column(Integer, nullable=False)
-    payment_type = Column(String(50), nullable=False)
-    payment_total = Column(Float, nullable=False)
-    currency_code = Column(Integer, nullable=False)
-    currency_total = Column(Float, nullable=False)
-    currency_exchange_rate = Column(Float, nullable=False)
-    installment_count = Column(Integer, nullable=False)
-    payment_tool_id = Column(String(50), nullable=True)
+    discount_type = Column(String(50), nullable=False)
+    discount_amount = Column(Float, nullable=False)
+    discount_rate = Column(Float, nullable=True)
+    discount_code = Column(String(15), nullable=True)
     is_cancel = Column(Boolean, nullable=False, default=False)
     is_deleted = Column(Boolean, nullable=False, default=False)
     delete_description = Column(String(1000), nullable=True)
@@ -31,4 +31,4 @@ class TransactionPaymentTemp(Model, CRUD):
     updated_at = Column(DateTime, server_default=func.now())
 
     def __repr__(self):
-        return f"<TransactionPaymentTemp(payment_type='{self.payment_type}', payment_total='{self.payment_total}')>"
+        return f"<TransactionDiscount(discount_type='{self.discount_type}', discount_amount='{self.discount_amount}')>"
