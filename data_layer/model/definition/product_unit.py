@@ -6,7 +6,7 @@ from data_layer.model.crud_model import Model
 from data_layer.model.crud_model import CRUD
 
 
-class StockUnit(Model, CRUD):
+class ProductUnit(Model, CRUD):
     def __init__(self, name=None, no: int = None, description: str = None,
                  base_id: int = None, base_amount: float = None, symbol: str = None):
         Model.__init__(self)
@@ -19,7 +19,7 @@ class StockUnit(Model, CRUD):
         self.base_amount = base_amount
         self.symbol = symbol
 
-    __tablename__ = "stock_unit"
+    __tablename__ = "product_unit"
 
     id = Column(BigInteger, primary_key=True, autoincrement=True, default=1)
     name = Column(String(50), nullable=False)
@@ -34,4 +34,4 @@ class StockUnit(Model, CRUD):
     updated_at = Column(DateTime, server_default=func.now())
 
     def __repr__(self):
-        return f"<StockUnit(name='{self.name}', no='{self.no}', description='{self.description}')>"
+        return f"<ProductUnit(name='{self.name}', no='{self.no}', description='{self.description}')>"
