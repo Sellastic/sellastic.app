@@ -1,5 +1,4 @@
 from sqlalchemy import Column, Integer, BigInteger, String, Boolean, DateTime, Float, ForeignKey
-from sqlalchemy.orm import relationship
 from sqlalchemy.sql import func
 
 from data_layer.model.crud_model import Model
@@ -28,6 +27,8 @@ class ProductUnit(Model, CRUD):
     base_id = Column(Integer, nullable=False)
     base_amount = Column(Float, nullable=False)
     symbol = Column(String(10), nullable=False)
+    is_deleted = Column(Boolean, nullable=False)
+    delete_description = Column(String(1000), nullable=True)
     fk_cashier_create_id = Column(BigInteger, ForeignKey("cashier.id"))
     fk_cashier_update_id = Column(BigInteger, ForeignKey("cashier.id"))
     created_at = Column(DateTime, server_default=func.now())

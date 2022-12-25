@@ -25,6 +25,8 @@ class Store(Model, CRUD):
     company_name = Column(String(50), nullable=True)
     web_page_url = Column(String(250), nullable=True)
     description = Column(String(100), nullable=True)
+    is_deleted = Column(Boolean, nullable=False)
+    delete_description = Column(String(1000), nullable=True)
     created_at = Column(DateTime, server_default=func.now())
     updated_at = Column(DateTime, server_default=func.now())
 

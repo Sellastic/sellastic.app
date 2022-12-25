@@ -26,6 +26,8 @@ class DepartmentSubGroup(Model, CRUD):
     description = Column(String(100), nullable=False)
     max_price = Column(Float, nullable=False)
     discount_rate = Column(Float, nullable=False)
+    is_deleted = Column(Boolean, nullable=False)
+    delete_description = Column(String(1000), nullable=True)
     fk_cashier_create_id = Column(BigInteger, ForeignKey("cashier.id"))
     fk_cashier_update_id = Column(BigInteger, ForeignKey("cashier.id"))
     created_at = Column(DateTime, server_default=func.now())
