@@ -19,6 +19,8 @@ from data_layer.model import TransactionPayment
 from data_layer.model import TransactionPaymentTemp
 from data_layer.model import TransactionTotal
 from data_layer.model import TransactionTotalTemp
+from data_layer.model import TransactionDiscount
+from data_layer.model import TransactionDiscountTemp
 
 
 def init_db():
