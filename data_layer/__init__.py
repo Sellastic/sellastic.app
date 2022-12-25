@@ -10,6 +10,7 @@ from data_layer.model import DepartmentSubGroup
 from data_layer.model import Product
 from data_layer.model import ProductBarcode
 from data_layer.model import ProductBarcodeMask
+from data_layer.model import TransactionHead
 
 
 def init_db():
