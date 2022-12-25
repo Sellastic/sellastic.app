@@ -1,4 +1,4 @@
-![Sellastic logo](https://raw.githubusercontent.com/Sellastic/sellastic.app/main/logo_small.png)
+![Sellastic logo](https://raw.githubusercontent.com/Sellastic/.github/main/profile/logo.png)
 
 ![Python 3.11](https://img.shields.io/badge/python-%3E=_3.11-success.svg)
 
