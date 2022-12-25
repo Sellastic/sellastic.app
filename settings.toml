@@ -1,3 +1,30 @@
+[pos]
+id = 1
+name = "Store 1. POS"
+serial_number = "1234"
+brand = "Brand"
+model = "A1"
+mac_address = "BC091B5FBEB9"
+force_to_work_online = true
+operation_system = "Ubuntu 22.10"
+
+[receipt_printer]
+enable = false
+type = "SERIAL"
+port = "COM1"
+width = 32
+
+[invoice_printer]
+enable = false
+type = "SERIAL"
+port = "COM1"
+width = 32
+
+[weighing_scales]
+enable = false
+type = "SERIAL"
+port = "COM1"
+
 [database]
 engine = "sqlite"
 driver = ""
@@ -8,7 +35,8 @@ database_name = "db.sqlite3"
 [backend_integration]
 enable = false
 backend_type = "office"
-backend_connection = "127.0.0.1:9999"
+backend_connection_1 = "127.0.0.1:9999"
+backend_connection_2 = "127.0.0.1:9999"
 
 [main_display]
 width = 1024
