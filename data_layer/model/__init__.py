@@ -11,4 +11,5 @@ from data_layer.model.definition.product import Product
 from data_layer.model.definition.product_barcode import ProductBarcode
 from data_layer.model.definition.product_barcode_mask import ProductBarcodeMask
 from data_layer.model.definition.transaction_head import TransactionHead
+from data_layer.model.definition.transaction_head_temp import TransactionHeadTemp
 

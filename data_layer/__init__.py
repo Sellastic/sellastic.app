@@ -12,6 +12,7 @@ from data_layer.model import Product
 from data_layer.model import ProductBarcode
 from data_layer.model import ProductBarcodeMask
 from data_layer.model import TransactionHead
+from data_layer.model import TransactionHeadTemp
 
 
 def init_db():
