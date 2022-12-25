@@ -80,12 +80,27 @@ It has modules for easily integrate it to different payment systems, loyalty sys
 - [ ] Reports Module
 - [ ] Screen Designer App
 
-### Contributors
+## Contributors
+Thanks a lot to our contributors for spending their time for developing!
 
-Thanks to our [contributors](https://github.com/Sellastic/sellastic.app/graphs/contributors)
-
-+ [Ferhat Mousavi](https://github.com/ferhat-mousavi)
-+ [Ezgi Özgür](https://github.com/ezgii-ozgur)
+<table>
+<tr>
+    <td align="center">
+        <a href="https://github.com/ferhat-mousavi">
+            <img src="https://avatars.githubusercontent.com/u/5930760?v=4" width="100;" alt="Ferhat Mousavi"/>
+            <br />
+            <sub><b>Ferhat Mousavi</b></sub>
+        </a>
+    </td>
+    <td align="center">
+        <a href="https://github.com/ezgii-ozgur">
+            <img src="https://avatars.githubusercontent.com/u/58365834?v=4" width="100;" alt="Ezgi Özgür"/>
+            <br />
+            <sub><b>Ezgi Özgür</b></sub>
+        </a>
+    </td>
+</tr>
+</table>
 
 
 ### Donation and Support 
