@@ -22,7 +22,7 @@ class Vat(Model, CRUD):
     no = Column(Integer, nullable=False)
     rate = Column(Integer, nullable=False)
     description = Column(String(100))
-    is_deleted = Column(Boolean, nullable=False)
+    is_deleted = Column(Boolean, nullable=False, default=False)
     delete_description = Column(String(1000), nullable=True)
     fk_cashier_create_id = Column(BigInteger, ForeignKey("cashier.id"))
     fk_cashier_update_id = Column(BigInteger, ForeignKey("cashier.id"))

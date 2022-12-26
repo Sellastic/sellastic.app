@@ -37,7 +37,7 @@ class Product(Model, CRUD):
     fk_department_main_group_id = Column(BigInteger, ForeignKey("department_main_group.id"))
     fk_department_sub_group_id = Column(BigInteger, ForeignKey("department_sub_group.id"))
     fk_store_id = Column(BigInteger, ForeignKey("store.id"))
-    is_deleted = Column(Boolean, nullable=False)
+    is_deleted = Column(Boolean, nullable=False, default=False)
     delete_description = Column(String(1000), nullable=True)
     fk_cashier_create_id = Column(BigInteger, ForeignKey("cashier.id"))
     fk_cashier_update_id = Column(BigInteger, ForeignKey("cashier.id"))

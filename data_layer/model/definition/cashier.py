@@ -29,7 +29,7 @@ class Cashier(Model, CRUD):
     password = Column(String(50), nullable=False)
     identity_number = Column(String(24))
     description = Column(String(100))
-    is_deleted = Column(Boolean, nullable=False)
+    is_deleted = Column(Boolean, nullable=False, default=False)
     delete_description = Column(String(1000), nullable=True)
     is_administrator = Column(Boolean(False), default=False)
     is_active = Column(Boolean(False), default=False)

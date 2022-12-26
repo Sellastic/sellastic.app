@@ -27,7 +27,7 @@ class ProductUnit(Model, CRUD):
     base_id = Column(Integer, nullable=False)
     base_amount = Column(Float, nullable=False)
     symbol = Column(String(10), nullable=False)
-    is_deleted = Column(Boolean, nullable=False)
+    is_deleted = Column(Boolean, nullable=False, default=False)
     delete_description = Column(String(1000), nullable=True)
     fk_cashier_create_id = Column(BigInteger, ForeignKey("cashier.id"))
     fk_cashier_update_id = Column(BigInteger, ForeignKey("cashier.id"))
