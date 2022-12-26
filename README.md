@@ -80,6 +80,10 @@ It has modules for easily integrate it to different payment systems, loyalty sys
 - [ ] Reports Module
 - [ ] Screen Designer App
 
+### Sample Configuration Design
+#### Login Form
+![Login Form](https://raw.githubusercontent.com/Sellastic/.github/main/profile/login.png)
+
 ## Contributors
 Thanks a lot to our contributors for spending their time for developing!
 
