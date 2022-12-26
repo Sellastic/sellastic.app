@@ -21,4 +21,5 @@ from data_layer.model.definition.transaction_total_temp import TransactionTotalT
 from data_layer.model.definition.transaction_discount import TransactionDiscount
 from data_layer.model.definition.transaction_discount_temp import TransactionDiscountTemp
 from data_layer.model.definition.closure import Closure
+from data_layer.model.definition.closure_total import ClosureTotal
 
