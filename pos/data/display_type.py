@@ -15,4 +15,4 @@ class DisplayType(Enum):
     VOID = auto()
     REFUND = auto()
     STOCK = auto()
-    END_OF_DAY = auto()
+    CLOSURE = auto()

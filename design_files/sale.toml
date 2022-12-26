@@ -16,7 +16,7 @@ button.back = { caption = "Back", image = "back.png" }
 type = "button"
 caption = "Back"
 function = "BACK"
-background_color = 0x778D45
+background_color = 0xFF0000
 foreground_color = 0xFFFFFF
 width = 200
 height = 50

@@ -18,6 +18,8 @@ class EventHandler(GeneralEvent, ReportEvent, SaleEvent, ConfigurationEvent):
                 function_object = self._sale
             case EventName.CONFIG.name:
                 function_object = self._configuration
+            case EventName.CLOSURE.name:
+                function_object = self._closure
             case EventName.BACK.name:
                 function_object = self._back
         return function_object

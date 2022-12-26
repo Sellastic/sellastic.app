@@ -7,5 +7,6 @@ class EventName(Enum):
     LOGIN = auto()
     LOGOUT = auto()
     SALE = auto()
+    CLOSURE = auto()
     CONFIG = auto()
     BACK = auto()

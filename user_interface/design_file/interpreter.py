@@ -73,6 +73,6 @@ class Interpreter:
                 toml_file_name = f"design_files/{env_data.main_display_data['refund']}"
             case DisplayType.STOCK:
                 toml_file_name = f"design_files/{env_data.main_display_data['stock']}"
-            case DisplayType.END_OF_DAY:
-                toml_file_name = f"design_files/{env_data.main_display_data['end_of_day']}"
+            case DisplayType.CLOSURE:
+                toml_file_name = f"design_files/{env_data.main_display_data['closure']}"
         return toml_file_name
