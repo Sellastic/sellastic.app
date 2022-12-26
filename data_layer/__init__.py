@@ -23,6 +23,7 @@ from data_layer.model import TransactionDiscount
 from data_layer.model import TransactionDiscountTemp
 from data_layer.model import Closure
 from data_layer.model import ClosureTotal
+from data_layer.model import ClosureCurrency
 
 
 def init_db():
