@@ -78,7 +78,11 @@ class BaseWindow(QMainWindow):
 
     def _create_numpad(self, design_data):
         print(design_data)
-        numpad = NumPad(design_data["caption"], self)
+        numpad = NumPad(width=design_data["width"],
+                        height=design_data["height"],
+                        location_x=design_data["location_x"],
+                        location_y=design_data["location_y"],
+                        parent=self)
         numpad.setGeometry(design_data["location_x"], design_data["location_y"],
                            design_data["width"], design_data["height"])
 
