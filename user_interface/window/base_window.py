@@ -83,8 +83,6 @@ class BaseWindow(QMainWindow):
                         location_x=design_data["location_x"],
                         location_y=design_data["location_y"],
                         parent=self)
-        numpad.setGeometry(design_data["location_x"], design_data["location_y"],
-                           design_data["width"], design_data["height"])
 
         numpad.setToolTip(design_data["caption"])
         numpad.set_event(self.app.event_distributor(design_data["function"]))
@@ -115,6 +113,7 @@ class BaseWindow(QMainWindow):
             textbox.keyboard = self.keyboard
 
     def _create_toolbar(self, design_data):
+        print(design_data)
         tools = ToolBar()
         if "button" in design_data and "back" in design_data["button"]:
             tools.add_event(back_function_caption=design_data["button"]["back"]["caption"],
