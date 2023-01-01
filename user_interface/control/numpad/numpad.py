@@ -14,7 +14,7 @@ class NumPad(QWidget):
         self.location_x = location_x
         self.location_y = location_y
         print(self.numpad_width, self.numpad_height, self.location_x, self.location_y)
-        self.setLayout(parent.layout())
+        parent.setLayout(self.keys_layout)
 
     def display(self, parent):
         self.setWindowFlags(Qt.WindowType.FramelessWindowHint)
