@@ -78,11 +78,11 @@ class BaseWindow(QMainWindow):
 
     def _create_numpad(self, design_data):
         print(design_data)
-        numpad = NumPad(width=design_data["width"],
+        numpad = NumPad(self,
+                        width=design_data["width"],
                         height=design_data["height"],
                         location_x=design_data["location_x"],
-                        location_y=design_data["location_y"],
-                        parent=self)
+                        location_y=design_data["location_y"])
 
         numpad.setToolTip(design_data["caption"])
         numpad.set_event(self.app.event_distributor(design_data["function"]))

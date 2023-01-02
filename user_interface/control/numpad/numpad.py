@@ -4,8 +4,8 @@ from PySide6.QtWidgets import QWidget, QGridLayout, QSizePolicy, QVBoxLayout, QA
 
 
 class NumPad(QAbstractButton):
-    def __init__(self, width=320, height=315, location_x=0, location_y=0, parent=None, *args, **kwargs):
-        QAbstractButton.__init__(self, parent=parent, *args, **kwargs)
+    def __init__(self, parent=None, width=320, height=315, location_x=0, location_y=0, *args, **kwargs):
+        QAbstractButton.__init__(self, parent=parent)
 
         self.parent = parent
         self.numpad_width = width
@@ -13,6 +13,7 @@ class NumPad(QAbstractButton):
         self.location_x = location_x
         self.location_y = location_y
         print(self.numpad_width, self.numpad_height, self.location_x, self.location_y)
+        self.setParent(parent)
 
     staticMetaObject = QtCore.QMetaObject()
 
