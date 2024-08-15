@@ -84,7 +84,7 @@ It has modules for easily integrate it to different payment systems, loyalty sys
 #### Login Form
 
 login criteria for now 
-- user name: `admin` 
+- username: `admin` 
 - password: `admin`
 
 ![Login Form](https://raw.githubusercontent.com/Sellastic/.github/main/profile/login.png)
