@@ -34,10 +34,10 @@ It has modules for easily integrate it to different payment systems, loyalty sys
 >
 > ##### Software Requirements
 >
-> - Python 3.11
-> - PySide6 6.4.1
-> - SQLAlchemy 2.0.0b3
-> - requests 2.28.1
+> - Python 3.12
+> - PySide6 6.7.2
+> - SQLAlchemy 2.0.32
+> - requests 2.32.3
 >
 > #### Supported Database Engines
 >
@@ -55,10 +55,10 @@ It has modules for easily integrate it to different payment systems, loyalty sys
 * Download sellastic.app project on your system.
 * Run `python3 -m venv venv` on sellastic.app project folder. This will create the venv directory on your project folder, and also create directories inside it containing a copy of the Python interpreter and various supporting files.
 * For Windows:
-  * First run `venv\Scripts\activate.bat` for activating your virtual environment. This will install proper packages.
+  * First run `venv\Scripts\activate.bat` for activating your virtual environment. This will install proper packages if not run `pip install -r requirements.txt`.
   * Then run `python app.py`
 * For MacOS or Linux:
-  * First run `source  venv\Scripts\activate` for activating your virtual environment. This will install proper packages.
+  * First run `source  venv\Scripts\activate` for activating your virtual environment. This will install proper packages if not run `pip3 install -r requirements.txt`.
   * Then run `python3 app.py`
 * With the execution of these commands, the sellastic.app application will start.
 
