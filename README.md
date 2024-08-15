@@ -1,6 +1,6 @@
 ![Sellastic logo](https://raw.githubusercontent.com/Sellastic/.github/main/profile/logo.png)
 
-![Python 3.11](https://img.shields.io/badge/python-%3E=_3.11-success.svg)
+![Python 3.12](https://img.shields.io/badge/python-%3E=_3.12-success.svg)
 
 # sellastic.app
 
