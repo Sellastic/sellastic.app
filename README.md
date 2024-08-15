@@ -96,13 +96,6 @@ Thanks a lot to our contributors for spending their time for developing!
             <sub><b>Ferhat Mousavi</b></sub>
         </a>
     </td>
-    <td align="center">
-        <a href="https://github.com/ezgii-ozgur">
-            <img src="https://avatars.githubusercontent.com/u/58365834?v=4" width="100;" alt="Ezgi Özgür"/>
-            <br />
-            <sub><b>Ezgi Özgür</b></sub>
-        </a>
-    </td>
 </tr>
 </table>
 
