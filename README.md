@@ -51,7 +51,7 @@ It has modules for easily integrate it to different payment systems, loyalty sys
 
 ### Installation Methods
 
-* Install [Python 3.11](https://www.python.org/downloads/) on your system.
+* Install [Python 3.12](https://www.python.org/downloads/) on your system.
 * Download sellastic.app project on your system.
 * Run `python3 -m venv venv` on sellastic.app project folder. This will create the venv directory on your project folder, and also create directories inside it containing a copy of the Python interpreter and various supporting files.
 * For Windows:
