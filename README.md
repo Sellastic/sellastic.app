@@ -1,3 +1,5 @@
+> **Under development. The project is not working properly yet.**
+
 ![Sellastic logo](https://raw.githubusercontent.com/Sellastic/.github/main/profile/logo.png)
 
 ![Python 3.12](https://img.shields.io/badge/python-%3E=_3.12-success.svg)
