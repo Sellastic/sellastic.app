@@ -13,7 +13,7 @@ class AlphaNumericVirtualKeyboard(QWidget):
     """ AlphaNumericVirtualKeyboard class
     """
 
-    def __init__(self, source=None, width=970, height=315, x_pos=0, y_pos=0, parent=None):
+    def __init__(self, source=None, width=970, height=315, location_x=0, location_y=0, parent=None):
         """ AlphaNumericVirtualKeyboard class constructor
 
         Parameters
@@ -24,7 +24,7 @@ class AlphaNumericVirtualKeyboard(QWidget):
 
         height : int, optional
 
-        x_pos : int, optional
+        location_x : int, optional
             X position of the keypad pop up (the default is 0)
         y_pos : int, optional
             Y position of the keypad pop up (the default is 0)
@@ -43,14 +43,14 @@ class AlphaNumericVirtualKeyboard(QWidget):
         self.keyboard_width = width
         self.keyboard_height = height
 
-        if x_pos != 0:
-            self.x_pos = x_pos
+        if location_x != 0:
+            self.location_x = location_x
         else:
-            self.x_pos = 0
-        if y_pos != 0:
-            self.y_pos = y_pos
+            self.location_x = 0
+        if location_y != 0:
+            self.location_y = location_y
         else:
-            self.y_pos = 0
+            self.location_y = 0
 
         self.move_up = False
         # self.global_layout = QtWidgets.QVBoxLayout(parent)
@@ -179,13 +179,13 @@ class AlphaNumericVirtualKeyboard(QWidget):
         
         """
         self.source = source
-        if self.x_pos == 0:
-            self.x_pos = int((self.parent.width() - self.keyboard_width) / 2)
+        if self.location_x == 0:
+            self.location_x = int((self.parent.width() - self.keyboard_width) / 2)
 
-        if self.y_pos == 0 and self.source.pos().y() + self.source.size().height() > self.parent.height() / 2:
-            self.y_pos = 0
+        if self.location_y == 0 and self.source.pos().y() + self.source.size().height() > self.parent.height() / 2:
+            self.location_y = 0
         else:
-            self.y_pos = self.parent.height() - self.keyboard_height
+            self.location_y = self.parent.height() - self.keyboard_height
 
         self.setWindowFlags(Qt.WindowStaysOnTopHint)
         self.setWindowState(Qt.WindowState.WindowActive)
@@ -247,7 +247,7 @@ class AlphaNumericVirtualKeyboard(QWidget):
 
             # self.global_layout.addLayout(self.keys_layout)
             # self.move(self.x_pos, self.y_pos * 2)
-            self.move(self.x_pos, self.y_pos)
+            self.move(self.location_x, self.location_y)
             self.show()
             self.animation_signal.signal.connect(self._show_animate)
             animate = KeyAnimationThread(self.animation_signal.signal, self)
@@ -421,7 +421,7 @@ class AlphaNumericVirtualKeyboard(QWidget):
         animate.start()
 
     def _close_animate(self, val):
-        self.move(self.x_pos, self.y_pos + self.y_pos * (val) / 25)
+        self.move(self.location_x, self.location_y + self.location_y * (val) / 25)
         if val == 25:
             self.hide()
             if self.close_ui_scroll:
