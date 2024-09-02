@@ -4,8 +4,25 @@ from PySide6.QtWidgets import QWidget, QGridLayout, QSizePolicy, QVBoxLayout, QA
 
 
 class NumPad(QAbstractButton):
-    def __init__(self, parent=None, width=320, height=315, location_x=0, location_y=0, *args, **kwargs):
-        QAbstractButton.__init__(self, parent=parent)
+    def __init__(self, source=None, width=320, height=315, location_x=0, location_y=0, parent=None, *args, **kwargs):
+        """ NumPad class constructor
+
+                Parameters
+                ----------
+               source : QButton
+
+                width : int, optional
+
+                height : int, optional
+
+                location_x : int, optional
+                    X position of the keypad pop up (the default is 0)
+                location_y : int, optional
+                    Y position of the keypad pop up (the default is 0)
+                parent : QButton
+                    Parent QButton (the default is None)
+                """
+        super(QAbstractButton, self).__init__(self)
 
         self.parent = parent
         self.numpad_width = width

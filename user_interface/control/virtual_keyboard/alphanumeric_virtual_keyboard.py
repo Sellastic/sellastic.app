@@ -26,7 +26,7 @@ class AlphaNumericVirtualKeyboard(QWidget):
 
         location_x : int, optional
             X position of the keypad pop up (the default is 0)
-        y_pos : int, optional
+        location_y : int, optional
             Y position of the keypad pop up (the default is 0)
         parent : QWidget
             Parent widget (the default is None)
