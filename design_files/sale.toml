@@ -24,6 +24,18 @@ location_x = 412
 location_y = 200
 
 [[design]]
+type = "button"
+caption = "FOOD"
+name = "DEPARTMENT1"
+function = "SALE_DEPARTMENT"
+background_color = 0xFF0000
+foreground_color = 0xFFFFFF
+width = 100
+height = 50
+location_x = 1
+location_y = 400
+
+[[design]]
 type = "numpad"
 caption = "NumPad"
 function = "PLU"
