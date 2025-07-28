@@ -1,4 +1,4 @@
-> **Under development. The project is not working properly yet.**
+> **Project Continuation:** This project has been renamed and is actively being developed under the new repository: [SaleFlex.PyPOS](https://github.com/SaleFlex/SaleFlex.PyPOS)
 
 ![Sellastic logo](https://raw.githubusercontent.com/Sellastic/.github/main/profile/logo.png)
 
