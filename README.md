@@ -1,4 +1,6 @@
-> **Project Continuation:** This project has been renamed and is actively being developed under the new repository: [SaleFlex.PyPOS](https://github.com/SaleFlex/SaleFlex.PyPOS)
+> ⚠️ **IMPORTANT NOTICE**  
+> This project has been **renamed and continued** as [**SaleFlex.PyPOS**](https://github.com/SaleFlex/SaleFlex.PyPOS).  
+> No further development will occur here — please visit the new repository for the latest updates.
 
 ![Sellastic logo](https://raw.githubusercontent.com/Sellastic/.github/main/profile/logo.png)
 
